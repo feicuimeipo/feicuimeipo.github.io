@@ -8,9 +8,7 @@ subtitle: '记录sarah学习：英语、语文、数学'
 description: ''
 keywords: sarah，小站，blog，英语、作文、语文、数学
 author: Sarah,
-language: 
- - zh-CN
- - en
+language: zh-CN
 timezone: ''
 
 # URL
@@ -133,5 +131,8 @@ import:
     - '<meta name="theme-color" content="#f4f4f4" media="(prefers-color-scheme: light)">'
     - '<meta name="theme-color" content="#121212" media="(prefers-color-scheme: dark)">'
   head_end:
+    - <meta name="hello" content="world">
   body_begin:
+    - <script></script>   
   body_end:
+    - <script></script>
