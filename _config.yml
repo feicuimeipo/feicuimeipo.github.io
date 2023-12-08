@@ -96,12 +96,6 @@ exclude:
 ignore:
 
 
-# Deployment
-## Docs: https://hexo.io/docs/one-command-deployment
-deploy:
-  type: git
-  repository: git@github.com:feicuimeipo/sarah.git
-  branch: dist
 
 
 #Maupassant 
@@ -111,7 +105,7 @@ deploy:
 ## Themes: https://hexo.io/themes/
 #theme: landscape
 theme: volantis
-  
+
   
 import:
   head_begin:
@@ -136,3 +130,10 @@ import:
     - <script></script>   
   body_end:
     - <script></script>
+    
+# Deployment
+## Docs: https://hexo.io/docs/one-command-deployment
+deploy:
+  type: git
+  repository: git@github.com:feicuimeipo/sarah.git
+  branch: master
