@@ -10,6 +10,9 @@ menu:
   Categories:
     url: /categories
     icon: fas fa-bookmark
+  Sarah:
+    url: /categories/Sarah小站
+    icon: fas fa-person-dress
   Archives:
     url: /archives
     icon: fas fa-archive
@@ -422,7 +425,7 @@ changyan:
 # Whether to display fork me on github icon and link, default true, You can change it to your repo address
 # 配置是否在 header 中显示 fork me on github 的图标，默认为true，你可以修改为你的仓库地址.
 githubLink:
-  enable: true
+  enable: false
   url: https://github.com/feicuimeipo/
   title: Fork Me
 
