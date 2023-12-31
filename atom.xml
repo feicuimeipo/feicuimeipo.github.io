@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>🐘 _山海博客</title>
+  
+  <subtitle>山海</subtitle>
+  <link href="http://blog.nianxi.cc/atom.xml" rel="self"/>
+  
+  <link href="http://blog.nianxi.cc/"/>
+  <updated>2023-12-31T16:17:25.339Z</updated>
+  <id>http://blog.nianxi.cc/</id>
+  
+  <author>
+    <name>_山海</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Java能力框架</title>
+    <link href="http://blog.nianxi.cc/2023/12/31/java-competence-framewor/"/>
+    <id>http://blog.nianxi.cc/2023/12/31/java-competence-framewor/</id>
+    <published>2023-12-31T06:24:53.467Z</published>
+    <updated>2023-12-31T16:17:25.339Z</updated>
+    
+    <content type="html"><![CDATA[<p>JAVA从初学到资深再到专家，是一个循序渐进的过程，不仅要coding，还要对IT知识体系有认知。以下是笔者认为高阶JAVA技术人员需要掌握的整体能力框架。相关内容的掌握的深浅直接反映其技术水平。</p><blockquote><p>改为文字，这样后面调整好修改</p></blockquote><h1>基础知识</h1><h2 id="计算机基础">计算机基础</h2><div class="mermaid">  graph TD计算机基础 --&gt; 操作系统计算机基础 --&gt; 数据结构计算机基础 --&gt; 网络计算机基础 --&gt; 算法</div><h2 id="Java">Java</h2><div class="mermaid">  graph TDJava --&gt; JVMJava --&gt; 语言特性Java --&gt; 多线程Java --&gt; IO编程</div><h1>项目经验</h1><div class="mermaid">  graph TD项目经验 --&gt; 项目描述项目经验 --&gt; 项目难点项目经验 --&gt; 项目问题项目经验 --&gt; 项目改进项目经验 --&gt; 理论知识理论知识 --&gt; WEB理论知识 --&gt; 敏捷</div><h1>架构能力</h1><h2 id="基础架构能力">基础架构能力</h2><div class="mermaid">  graph TD基础架构能力 --&gt; Docker基础架构能力 --&gt; K8S基础架构能力 --&gt; Prometheus基础架构能力 --&gt; CAP理论基础架构能力 --&gt; 领域驱动设计</div><h2 id="微服务架构">微服务架构</h2><div class="mermaid">  graph TD微服务架构  --&gt; 注册中心微服务架构  --&gt; 流量控制微服务架构  --&gt; 分布式事务微服务架构  --&gt; 链路跟踪微服务架构  --&gt; ...</div><h1>应用知识</h1><h2 id="常用工具">常用工具</h2><div class="mermaid">  graph TD常用工具 --&gt; 排查类常用工具 --&gt; 协作类常用工具 --&gt; 保障类常用工具 --&gt; 系统类</div><h2 id="常用框架">常用框架</h2><div class="mermaid">  graph TD常用框架 --&gt; Spring常用框架 --&gt; Netty常用框架 --&gt; Dubbo常用框架 --&gt; Mybatic常用框架 --&gt; 细分领域常用框架 --&gt; ...</div><h2 id="队列">队列</h2><div class="mermaid">  graph TD常用框架 --&gt; Kafka常用框架 --&gt; ActiveMQ常用框架 --&gt; RabbitMQ常用框架 --&gt; ...</div><h2 id="数据库">数据库</h2><div class="mermaid">  graph TD数据库 --&gt; RMDB数据库 --&gt; NoSql数据库 --&gt; 图数据库数据库 --&gt; 向量数据库数据库 --&gt; ...</div><h2 id="缓存">缓存</h2><div class="mermaid">  graph TD缓存 --&gt; redis缓存 --&gt; ehcache缓存 --&gt; ...</div><h2 id="云平台">云平台</h2><div class="mermaid">  graph TD云平台 --&gt; 阿里云平台 --&gt; 腾讯云平台 --&gt; 华为云平台 --&gt; Ucloud云平台 --&gt; 百度云平台 --&gt; AWS云平台 --&gt; AZure云平台 --&gt; GoogleCloud</div><h1>文档能力</h1><div class="mermaid">  graph TD文档能力 --&gt; 方案编写文档能力 --&gt; 概要设计文档能力 --&gt; 详细设计</div><p><br><br></p><p>我们抛开JAVA语言本身，将其他语言生态的相关功能置入，同样适用。</p><blockquote><p>当时较懒，对于图中的内容，笔者只更新了两个文章, 不久之后将由其他博客搬至JJ。再有后续的有时间再添加上。</p></blockquote><p><a href="https://juejin.cn/post/7296017029705318419">Jvm原理</a><br><a href="https://juejin.cn/post/7296017029705318419">Jvm调优</a><br>…</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;JAVA从初学到资深再到专家，是一个循序渐进的过程，不仅要coding，还要对IT知识体系有认知。以下是笔者认为高阶JAVA技术人员需要掌握的整体能力框架。相关内容的掌握的深浅直接反映其技术水平。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;改为文字，这样后面调整好修改&lt;/p&gt;</summary>
+      
+    
+    
+    
+    <category term="Java" scheme="http://blog.nianxi.cc/categories/Java/"/>
+    
+    
+    <category term="Java" scheme="http://blog.nianxi.cc/tags/Java/"/>
+    
+  </entry>
+  
+</feed>
