@@ -3,7 +3,7 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: _山海博客
+title: 🐘 _山海博客
 subtitle: '山海'
 description: ''
 keywords:
@@ -121,3 +121,10 @@ feed:
   content_limit: 140
   content_limit_delim: ' '
   order_by: -date
+
+githubEmojis:
+  enable: true
+  className: github-emoji
+  inject: true
+  styles:
+  customEmojis:
