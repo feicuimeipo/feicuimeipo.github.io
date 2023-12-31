@@ -768,6 +768,11 @@ hexo-generator-category@^2.0.0:
   dependencies:
     hexo-pagination "3.0.0"
 
+hexo-generator-cname@^0.3.0:
+  version "0.3.0"
+  resolved "https://registry.npmmirror.com/hexo-generator-cname/-/hexo-generator-cname-0.3.0.tgz"
+  integrity sha512-ZKyxqORsm4vlIilpTaL30xKyOiTS/ZdCs5PGso0UWh+E/4hvpoYNFv4sCp4EeUuBhgGiV4xuyg9M9CHfm8XV7Q==
+
 hexo-generator-feed@^3.0.0:
   version "3.0.0"
   resolved "https://registry.npmmirror.com/hexo-generator-feed/-/hexo-generator-feed-3.0.0.tgz"
