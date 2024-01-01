@@ -1,11 +1,12 @@
 ---
 title: Java能力框架之JVM调优
 categories: Java
-data: 2024-01-01
 author: _山海
-tags: 
+tags:
   - Java
 keywords: java
+abbrlink: 1531152183
+data: 2024-01-01 00:00:00
 ---
 
 操作系统级别Java进程所占用的内存数值不能准确的反应堆内存的真实占用情况，因为GC过后这个值是不会变化的，内存调优的时候要更多地使用JDK提供的内存查看工具，比如JConsole和Java VisualVM。

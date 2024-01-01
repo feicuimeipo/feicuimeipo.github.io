@@ -14,12 +14,17 @@ timezone: 'Asia/Shanghai'
 # URL
 ## Set your site url here. For example, if you use GitHub Page, set url as 'https://username.github.io/project'
 url: https://blog.nianxi.cc
-permalink: :year/:month/:day/:title/
-permalink_defaults:
+#permalink: :year/:month/:day/:title/
+permalink: article/:abbrlink.html
+#permalink_defaults: 
+root: /
 pretty_urls:
   trailing_index: true # Set to false to remove trailing 'index.html' from permalinks
   trailing_html: true # Set to false to remove trailing '.html' from permalinks
-
+abbrlink:
+  alg: crc32  # 算法：crc16(default) and crc32
+  rep: dec    # 进制：dec(default) and hex
+  
 # Directory
 source_dir: source
 public_dir: public
@@ -40,13 +45,13 @@ external_link:
   exclude: ''
 filename_case: 0
 render_drafts: false
-post_asset_folder: false
+post_asset_folder: true
 relative_link: false
 future: true
 syntax_highlighter: highlight.js
 highlight:
   enable: false
-  line_number: true
+  line_number: false
   auto_detect: false
   tab_replace: ''
   wrap: true
@@ -54,8 +59,15 @@ highlight:
 prismjs:
   enable: true
   preprocess: true
-  line_number: true
-  tab_replace: ''
+  line_number: false
+  tab_replace: '' 
+prism_plugin:
+  mode: 'preprocess' # realtime/preprocess
+  theme: 'default'
+  line_number: false # default false  
+search:
+  path: search.xml
+  field: post
 
 # Home page setting
 # path: Root path for your blogs index page. (default = '')
@@ -100,6 +112,8 @@ ignore:
 ## Themes: https://hexo.io/themes/
 theme: hexo-theme-matery
 
+
+
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
@@ -111,6 +125,13 @@ deploy:
 # 配置 Rss 订阅
 plugin: 
   - hexo-generator-feed
+  - hexo-generator-sitemap
+  - hexo-generator-baidu-sitemap
+
+baidusitemap:
+  path: baidusitemap.xml
+sitemap:
+  path: sitemap.xml
 
 feed:
   type: atom
@@ -128,3 +149,39 @@ githubEmojis:
   inject: true
   styles:
   customEmojis:
+
+
+markdown:
+  preset: 'default'
+  render:
+    html: true
+    xhtmlOut: false
+    langPrefix: 'language-'
+    breaks: true
+    linkify: true
+    typographer: true
+    quotes: '“”‘’'
+  enable_rules:
+  disable_rules:
+  plugins:
+  anchors:
+    level: 2
+    collisionSuffix: ''
+    permalink: false
+    permalinkClass: 'header-anchor'
+    permalinkSide: 'left'
+    permalinkSymbol: '¶'
+    case: 0
+    separator: '-'
+  images:
+    lazyload: false
+    prepend_root: false
+    post_asset: false
+  inline: false  # https://markdown-it.github.io/markdown-it/#MarkdownIt.renderInline  
+
+math:
+  engine: 'katex' #'mathjax' # or 'katex'
+  mathjax:
+    # src: custom_mathjax_source
+    config:
+      # MathJax config

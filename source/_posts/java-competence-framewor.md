@@ -1,11 +1,12 @@
 ---
 title: Java能力框架
 categories: Java
-data: 2024-01-01
 author: _山海
-tags: 
+tags:
   - Java
 keywords: java
+abbrlink: 2914746800
+data: 2024-01-01 00:00:00
 ---
 
 
