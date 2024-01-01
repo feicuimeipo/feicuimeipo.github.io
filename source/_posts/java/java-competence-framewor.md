@@ -14,8 +14,8 @@ JAVA从初学到资深再到专家，是一个循序渐进的过程，不仅要c
 
 > 改为文字，这样后面调整好修改
 
-# 基础知识
-## 计算机基础
+## 基础知识
+### 计算机基础
 
 
 {% mermaid %}
@@ -28,8 +28,7 @@ graph TD
 
 {% endmermaid  %}
 
-## Java
-
+### Java
 
 {% mermaid %}
 graph TD
@@ -42,7 +41,7 @@ Java --> IO编程
 
 
 
-# 项目经验
+## 项目经验
 
 {% mermaid %}
 graph TD
@@ -55,9 +54,9 @@ graph TD
 理论知识 --> 敏捷
 {% endmermaid %}
 
-# 架构能力
+## 架构能力
 
-## 基础架构能力
+### 基础架构能力
 {% mermaid %}
 graph TD
 基础架构能力 --> Docker
@@ -67,7 +66,7 @@ graph TD
 基础架构能力 --> 领域驱动设计
 {% endmermaid %}
 
-## 微服务架构
+### 微服务架构
 
 {% mermaid %}
 graph TD
@@ -78,9 +77,9 @@ graph TD
 微服务架构  --> ...
 {% endmermaid %}
 
-# 应用知识
+## 应用知识
 
-## 常用工具
+### 常用工具
 
 {% mermaid %}
 graph TD
@@ -89,7 +88,7 @@ graph TD
 常用工具 --> 保障类
 常用工具 --> 系统类
 {% endmermaid %}
-## 常用框架
+### 常用框架
 {% mermaid %}
 graph TD
 常用框架 --> Spring
@@ -100,7 +99,7 @@ graph TD
 常用框架 --> ...
 {% endmermaid %}
 
-## 队列
+### 队列
 {% mermaid %}
 graph TD
 常用框架 --> Kafka
@@ -109,7 +108,7 @@ graph TD
 常用框架 --> ...
 {% endmermaid %}
 
-## 数据库
+### 数据库
 {% mermaid %}
 graph TD
 数据库 --> RMDB
@@ -118,7 +117,8 @@ graph TD
 数据库 --> 向量数据库
 数据库 --> ...
 {% endmermaid %}
-## 缓存
+
+### 缓存
 {% mermaid %}
 graph TD
 缓存 --> redis
@@ -126,7 +126,7 @@ graph TD
 缓存 --> ...
 {% endmermaid %}
 
-## 云平台
+### 云平台
 {% mermaid %}
 graph TD
 云平台 --> 阿里
@@ -139,7 +139,7 @@ graph TD
 云平台 --> GoogleCloud
 {% endmermaid %}
 
-# 文档能力
+## 文档能力
 {% mermaid %}
 graph TD
 文档能力 --> 方案编写
