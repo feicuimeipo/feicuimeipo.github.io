@@ -6,7 +6,7 @@
   <link href="https://blog.nianxi.cc/atom.xml" rel="self"/>
   
   <link href="https://blog.nianxi.cc/"/>
-  <updated>2023-12-31T19:15:40.662Z</updated>
+  <updated>2024-01-01T11:11:46.389Z</updated>
   <id>https://blog.nianxi.cc/</id>
   
   <author>
@@ -15,6 +15,62 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Java能力框架之JVM原理</title>
+    <link href="https://blog.nianxi.cc/2024/01/01/Java%E8%83%BD%E5%8A%9B%E6%A1%86%E6%9E%B6%E4%B9%8BJVM%E5%8E%9F%E7%90%86/"/>
+    <id>https://blog.nianxi.cc/2024/01/01/Java%E8%83%BD%E5%8A%9B%E6%A1%86%E6%9E%B6%E4%B9%8BJVM%E5%8E%9F%E7%90%86/</id>
+    <published>2024-01-01T09:54:07.308Z</published>
+    <updated>2024-01-01T11:11:46.389Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1&gt;JVM虚拟机模型: 一次编译，到处运行&lt;/h1&gt;
+&lt;div class=&quot;mermaid&quot;&gt;
+  graph TD
+A[JAVA程序] --&amp;gt;  B[JAVA字节码]
+B[JAVA字节码] -- 解释 --&amp;gt; C[Window Java虚拟机]</summary>
+        
+      
+    
+    
+    
+    <category term="Java" scheme="https://blog.nianxi.cc/categories/Java/"/>
+    
+    
+    <category term="Java" scheme="https://blog.nianxi.cc/tags/Java/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Java能力框架之JVM调优</title>
+    <link href="https://blog.nianxi.cc/2024/01/01/Java%E8%83%BD%E5%8A%9B%E6%A1%86%E6%9E%B6%E4%B9%8BJVM%E8%B0%83%E4%BC%98/"/>
+    <id>https://blog.nianxi.cc/2024/01/01/Java%E8%83%BD%E5%8A%9B%E6%A1%86%E6%9E%B6%E4%B9%8BJVM%E8%B0%83%E4%BC%98/</id>
+    <published>2024-01-01T09:52:42.754Z</published>
+    <updated>2024-01-01T11:11:44.887Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;操作系统级别Java进程所占用的内存数值不能准确的反应堆内存的真实占用情况，因为GC过后这个值是不会变化的，内存调优的时候要更多地使用JDK提供的内存查看工具，比如JConsole和Java VisualVM。&lt;/p&gt;
+&lt;h1&gt;Full GC&lt;/h1&gt;
+&lt;h2</summary>
+        
+      
+    
+    
+    
+    <category term="Java" scheme="https://blog.nianxi.cc/categories/Java/"/>
+    
+    
+    <category term="Java" scheme="https://blog.nianxi.cc/tags/Java/"/>
+    
+  </entry>
   
   <entry>
     <title>Sarah小站首页</title>

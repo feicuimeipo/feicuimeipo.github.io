@@ -5,11 +5,9 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="java">
-    <meta name="description" content="JAVA从初学到资深再到专家，是一个循序渐进的过程，不仅要coding，还要对IT知识体系有认知。以下是笔者认为高阶JAVA技术人员需要掌握的整体能力框架。相关内容的掌握的深浅直接反映其技术水平。
-
-改为文字，这样后面调整好修改
-
-基础知识">
+    <meta name="description" content="操作系统级别Java进程所占用的内存数值不能准确的反应堆内存的真实占用情况，因为GC过后这个值是不会变化的，内存调优的时候要更多地使用JDK提供的内存查看工具，比如JConsole和Java VisualVM。
+Full GC
+Full G">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -21,7 +19,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Java能力框架 | 🐘 _山海博客</title>
+    <title>Java能力框架之JVM调优 | 🐘 _山海博客</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
 
@@ -302,12 +300,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/8.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/11.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Java能力框架</h1>
+                    <h1 class="description center-align post-title">Java能力框架之JVM调优</h1>
                 </div>
             </div>
         </div>
@@ -356,7 +354,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2023-12-31
+                    2024-01-01
                 </div>
                 
 
@@ -370,14 +368,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    664
+                    1.8k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    2 分
+                    7 分
                 </div>
                 
 
@@ -400,142 +398,192 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>JAVA从初学到资深再到专家，是一个循序渐进的过程，不仅要coding，还要对IT知识体系有认知。以下是笔者认为高阶JAVA技术人员需要掌握的整体能力框架。相关内容的掌握的深浅直接反映其技术水平。</p>
+                <p>操作系统级别Java进程所占用的内存数值不能准确的反应堆内存的真实占用情况，因为GC过后这个值是不会变化的，内存调优的时候要更多地使用JDK提供的内存查看工具，比如JConsole和Java VisualVM。</p>
+<h1>Full GC</h1>
+<h2 id="Full-GC的几种情况">Full GC的几种情况</h2>
+<p>对JVM内存的系统级的调优主要的目的是减少GC的频率和Full GC的次数，过多的GC和Full GC是会占用很多的系统资源（主要是CPU），影响系统的吞吐量。特别要关注Full GC，因为它会对整个堆进行整理，导致Full GC一般由于以下几种情况：</p>
+<ul>
+<li>旧生代空间不足<br>
+调优时尽量让对象在新生代GC时被回收、让对象在新生代多存活一段时间和不要创建过大的对象及数组避免直接在旧生代创建对象。</li>
+<li>Pemanet Generation空间不足</li>
+<li>增大Perm Gen空间，避免太多静态对象</li>
+<li>统计得到的GC后晋升到旧生代的平均大小大于旧生代剩余空间</li>
+<li>控制好新生代和旧生代的比例</li>
+<li>System.gc()被显示调用</li>
+<li>垃圾回收不要手动触发，尽量依靠JVM自身的机制</li>
+</ul>
+<h2 id="调优比例不良设置会导致的后果">调优比例不良设置会导致的后果</h2>
+<p>调优手段主要是通过控制堆内存的各个部分的比例和GC策略来实现，各部分比例不良设置会导致什么后果。</p>
+<h3 id="新生代设置过小，有以下两种情况">新生代设置过小，有以下两种情况</h3>
+<ul>
+<li>会让新生代GC次数非常频繁，增大系统消耗；</li>
+<li>会导致大对象直接进入旧生代，占据了旧生代剩余空间，诱发Full GC。</li>
+</ul>
+<h3 id="新生代设置过大，有以下两种情况">新生代设置过大，有以下两种情况</h3>
+<ul>
+<li>会导致旧生代过小（堆总量一定），从而诱发Full GC；</li>
+<li>新生代GC耗时大幅度增加，一般说来新生代占整个堆1/3比较合适；</li>
+</ul>
+<h3 id="Survivor设置过小">Survivor设置过小</h3>
+<p>导致对象从eden直接到达旧生代，降低了在新生代的存活时间。</p>
+<h3 id="Survivor设置过大">Survivor设置过大</h3>
+<p>导致eden过小，增加了GC频率。</p>
+<h1>调优策略</h1>
+<p>由内存管理和垃圾回收可知新生代和旧生代都有多种GC策略和组合搭配，选择这些策略对于我们这些开发人员是个难题，JVM提供两种较为简单的GC策略的设置方式：</p>
+<h2 id="吞吐量优先">吞吐量优先</h2>
+<p>JVM以吞吐量为指标，自行选择相应的GC策略及控制新生代与旧生代的大小比例，来达到吞吐量指标。这个值可由<code>-XX:GCTimeRatio=n</code>来设置</p>
+<h2 id="暂停时间优先">暂停时间优先</h2>
+<p>JVM以暂停时间为指标，自行选择相应的GC策略及控制新生代与旧生代的大小比例，尽量保证每次GC造成的应用停止时间都在指定的数值范围内完成。这个值可由<code>-XX:MaxGCPauseRatio=n</code>来设置。</p>
+<h1>JVM参数设置</h1>
+<h2 id="堆内存">堆内存</h2>
+<ul>
+<li>-Xms:  或-XX:InitialHeapSize，最小堆内存,单位是Byte,m,g等</li>
+<li>-Xmx：或 -XX:MaxHeapSize，最大堆内存,单位是Byte,m,g等<br>
+比如<code>java -Xms128m -Xmx2g </code></li>
+</ul>
+<h2 id="新生代">新生代</h2>
+<ul>
+<li>
+<p>-XX:NewSize  初始时年轻区内存，通常为 Xmx 的 1/3 或 1/4。</p>
+</li>
+<li>
+<p>-XX:MaxNewSize 最大年轻区内存</p>
+</li>
+<li>
+<p>-XX:MaxTenuringThreshold<br>
+来控制新生代存活时间，尽量让对象在新生代被回收。 新生代=Eden + 2 个 Survivor空间, 但实际可用空间为 = Eden + 1 个 Survivor，即 90%。</p>
+</li>
+</ul>
+<h2 id="新老比值变化">新老比值变化</h2>
+<ul>
+<li>
+<p>-XX:NewRatio 指定老年代与新生代的堆大小比例。在使用CMS收集器时，此参数失效</p>
+</li>
+<li>
+<p>-XX:SurvivorRatio<br>
+新生代中 Eden 与 Survivor 的比值。默认值为 8,即 Eden 占新生代空间的 8/10，另外两个 Survivor 各占 1/10。</p>
+</li>
+<li>
+<p>-MinHeapFreeRatio<br>
+指定jvm heap在使用率小于所设定的值，heap进行收缩，Xmx==Xms的情况下无效</p>
+</li>
+<li>
+<p>-XX:MaxHeapFreeRatio<br>
+指定jvm heap在使用率大于n的情况下,heap进行扩张,Xmx==Xms的情况下无效</p>
+</li>
+</ul>
+<h2 id="线程栈">线程栈</h2>
+<ul>
+<li>-Xss：线程栈大小</li>
+</ul>
+<h2 id="Java-heap页大小">Java heap页大小</h2>
+<ul>
+<li>-XX:LargePageSizeInBytes：指定Java heap的分页页面大小</li>
+</ul>
+<h2 id="压缩类指针">压缩类指针</h2>
+<ul>
+<li>
+<p>-XX:+UseCompressedClassPointers<br>
+压缩类指针。对象的类指针（_klass）被压缩至32bit，使用类指针压缩空间的基地址</p>
+</li>
+<li>
+<p>-UseCompressedOops<br>
+压缩对象指针，oops是普通对象指针，Java堆中对象的对象指针被压缩到32bit，使用堆基地址。</p>
+</li>
+</ul>
 <blockquote>
-<p>改为文字，这样后面调整好修改</p>
+<p>注意：64bit的服务器上设置-Xmx32g时，-XX:+UseCompressedOops和-XX:+UseCompressedClassPointers会失效，所以最大的堆设置为<strong>31g</strong>。</p>
 </blockquote>
-<h1>基础知识</h1>
-<h2 id="计算机基础">计算机基础</h2>
-<div class="mermaid">
-  graph TD
-
-计算机基础 --&gt; 操作系统
-计算机基础 --&gt; 数据结构
-计算机基础 --&gt; 网络
-计算机基础 --&gt; 算法
-
-</div>
-
-<h2 id="Java">Java</h2>
-<div class="mermaid">
-  graph TD
-
-Java --&gt; JVM
-Java --&gt; 语言特性
-Java --&gt; 多线程
-Java --&gt; IO编程
-</div>
-
-<h1>项目经验</h1>
-<div class="mermaid">
-  graph TD
-项目经验 --&gt; 项目描述
-项目经验 --&gt; 项目难点
-项目经验 --&gt; 项目问题
-项目经验 --&gt; 项目改进
-项目经验 --&gt; 理论知识
-理论知识 --&gt; WEB
-理论知识 --&gt; 敏捷
-</div>
-
-<h1>架构能力</h1>
-<h2 id="基础架构能力">基础架构能力</h2>
-<div class="mermaid">
-  graph TD
-基础架构能力 --&gt; Docker
-基础架构能力 --&gt; K8S
-基础架构能力 --&gt; Prometheus
-基础架构能力 --&gt; CAP理论
-基础架构能力 --&gt; 领域驱动设计
-</div>
-
-<h2 id="微服务架构">微服务架构</h2>
-<div class="mermaid">
-  graph TD
-微服务架构  --&gt; 注册中心
-微服务架构  --&gt; 流量控制
-微服务架构  --&gt; 分布式事务
-微服务架构  --&gt; 链路跟踪
-微服务架构  --&gt; ...
-</div>
-
-<h1>应用知识</h1>
-<h2 id="常用工具">常用工具</h2>
-<div class="mermaid">
-  graph TD
-常用工具 --&gt; 排查类
-常用工具 --&gt; 协作类
-常用工具 --&gt; 保障类
-常用工具 --&gt; 系统类
-</div>
-
-<h2 id="常用框架">常用框架</h2>
-<div class="mermaid">
-  graph TD
-常用框架 --&gt; Spring
-常用框架 --&gt; Netty
-常用框架 --&gt; Dubbo
-常用框架 --&gt; Mybatic
-常用框架 --&gt; 细分领域
-常用框架 --&gt; ...
-</div>
-
-<h2 id="队列">队列</h2>
-<div class="mermaid">
-  graph TD
-常用框架 --&gt; Kafka
-常用框架 --&gt; ActiveMQ
-常用框架 --&gt; RabbitMQ
-常用框架 --&gt; ...
-</div>
-
-<h2 id="数据库">数据库</h2>
-<div class="mermaid">
-  graph TD
-数据库 --&gt; RMDB
-数据库 --&gt; NoSql
-数据库 --&gt; 图数据库
-数据库 --&gt; 向量数据库
-数据库 --&gt; ...
-</div>
-
-<h2 id="缓存">缓存</h2>
-<div class="mermaid">
-  graph TD
-缓存 --&gt; redis
-缓存 --&gt; ehcache
-缓存 --&gt; ...
-</div>
-
-<h2 id="云平台">云平台</h2>
-<div class="mermaid">
-  graph TD
-云平台 --&gt; 阿里
-云平台 --&gt; 腾讯
-云平台 --&gt; 华为
-云平台 --&gt; Ucloud
-云平台 --&gt; 百度
-云平台 --&gt; AWS
-云平台 --&gt; AZure
-云平台 --&gt; GoogleCloud
-</div>
-
-<h1>文档能力</h1>
-<div class="mermaid">
-  graph TD
-文档能力 --&gt; 方案编写
-文档能力 --&gt; 概要设计
-文档能力 --&gt; 详细设计
-</div>
-
+<h2 id="永久代-jdk8以前">永久代(jdk8以前)</h2>
+<ul>
+<li>-XX:PermSize 永久代初始大小</li>
+<li>-XX:MaxPermSize：永久代大小的最大值</li>
+</ul>
+<h2 id="元数据相关-jdk8及以后">元数据相关(jdk8及以后)</h2>
+<ul>
+<li>
+<p>-XX:MetaspaceSize 初始空间大小，达到该值就会触发垃圾收集进行类型卸载。</p>
+</li>
+<li>
+<p>-XX:MaxMetaspaceSize 最大空间，默认是没有限制的。</p>
+</li>
+<li>
+<p>-XX:MinMetaspaceFreeRatio 在GC之后，最小的Metaspace剩余空间容量的百分比，减少为分配空间所导致的垃圾收集</p>
+</li>
+<li>
+<p>-XX:MaxMetaspaceFreeRatio 在GC之后，最大的Metaspace剩余空间容量的百分比，减少为释放空间所导致的垃圾收集</p>
+</li>
+<li>
+<p>-XX:MaxMetaspaceExpansion Metaspace增长时的最大幅度</p>
+</li>
+<li>
+<p>-XX:MinMetaspaceExpansion  Metaspace增长时的最小幅度</p>
+</li>
+</ul>
+<h2 id="垃圾回收统计信息">垃圾回收统计信息</h2>
+<ul>
+<li>-XX:+PrintGC</li>
+<li>-XX:+PrintGCDetails</li>
+<li>-XX:+PrintGCTimeStamps</li>
+<li>-Xloggc:filename</li>
+</ul>
+<h2 id="回收器设置">回收器设置</h2>
+<ul>
+<li>-XX:+UseSerialGC: 设置串行收集器</li>
+<li>-XX:+UseParallelGC: 设置并行收集器</li>
+<li>-XX:+UseParalledlOldGC:设置并行年老代收集器</li>
+<li>-XX:+UseConcMarkSweepGC:设置并发收集器</li>
+</ul>
+<h2 id="并行收集器设置">并行收集器设置</h2>
+<ul>
+<li>
+<p>-XX:ParallelGCThreads<br>
+指定并行 GC 线程的数量。默认情况下，当 CPU 数量小于8，ParallelGCThreads 的值等于 CPU 数量，当 CPU 数量大于 8 时，则使用公式：<code>ParallelGCThreads = 8 + ((N - 8) * 5/8) = 3 +（（5*CPU）/ 8）</code>。</p>
+</li>
+<li>
+<p>-XX:MaxGCPauseMillis:设置并行收集最大暂停时间</p>
+</li>
+<li>
+<p>-XX:GCTimeRatio: 设置垃圾回收时间占程序运行时间的百分比<code>公式为1/(1+n)</code>。</p>
+</li>
+<li>
+<p>-XX:+CMSIncrementalMode: 设置为增量模式，适用于单CPU情况。</p>
+</li>
+</ul>
+<h2 id="生成堆内存快照">生成堆内存快照</h2>
+<ul>
+<li>-XX:+HeapDumpOnOutOfMemoryError：让JVM在发生内存溢出时自动的生成堆内存快照。</li>
+<li>-XX:HeapDumpPath：快照存储路径，默认保存在JVM的启动目录下名为java_pid<pid>.hprof</pid></li>
+<li>-XX:OnOutOfMemoryError: 异常发生时执行一些操作</li>
+</ul>
+<h2 id="代码缓存">代码缓存</h2>
+<ul>
+<li>
+<p>-XX:InitialCodeCacheSize</p>
+</li>
+<li>
+<p>-XX:ReservedCodeCacheSize<br>
+代码缓存确实很少引起性能问题，但是一旦发生其影响可能是毁灭性的。如果代码缓存被占满，JVM会打印出一条警告消息，并切换到interpreted-only 模式：JIT编译器被停用，字节码将不再会被编译成机器码。应用程序将继续运行，但运行速度会降低一个数量级，直到有人注意到这个问题。</p>
+</li>
+<li>
+<p>-XX:+UseCodeCacheFlushing</p>
+</li>
+</ul>
+<p>当代码缓存被填满时让JVM放弃一些编译代码，避免当代码缓存被填满的时候JVM切换到interpreted-only 模式 。</p>
+<br>
+<h1>后记</h1>
+<p>该类文章网上已经非常多，但是能完整的全面且清晰的写下来的，需要精力与耐力。为了JYM，笔者多写一文。</p>
 <p><br><br></p>
-<p>我们抛开JAVA语言本身，将其他语言生态的相关功能置入，同样适用。</p>
-<blockquote>
-<p>当时较懒，对于图中的内容，笔者只更新了两个文章, 不久之后将由其他博客搬至JJ。再有后续的有时间再添加上。</p>
-</blockquote>
-<p><a target="_blank" rel="noopener" href="https://juejin.cn/post/7296017029705318419">Jvm原理</a><br>
-<a target="_blank" rel="noopener" href="https://juejin.cn/post/7296017029705318419">Jvm调优</a><br>
-…</p>
+<p><strong>参考</strong></p>
+<p><a target="_blank" rel="noopener" href="http://niweiwei.iteye.com/blog/2123347">http://niweiwei.iteye.com/blog/2123347</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/huaweitman/article/details/50552960">https://blog.csdn.net/huaweitman/article/details/50552960</a></p>
+<p><a target="_blank" rel="noopener" href="http://www.cnblogs.com/redcreen/archive/2011/05/05/2038331.html%EF%BC%8Cjvm%E8%B0%83%E4%BC%98%E5%8F%82%E8%80%83%E9%85%8D%E7%BD%AE">http://www.cnblogs.com/redcreen/archive/2011/05/05/2038331.html，jvm调优参考配置</a></p>
+<p><a target="_blank" rel="noopener" href="http://ifeve.com/useful-jvm-flags-part-4-heap-tuning/">http://ifeve.com/useful-jvm-flags-part-4-heap-tuning/</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/liubenlong007/article/details/78143285">https://blog.csdn.net/liubenlong007/article/details/78143285</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/redcreen/archive/2011/05/04/2037057.html">https://www.cnblogs.com/redcreen/archive/2011/05/04/2037057.html</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/zhulin-jun/p/6516292.html">https://www.cnblogs.com/zhulin-jun/p/6516292.html</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/beautygao/article/details/79083058">https://blog.csdn.net/beautygao/article/details/79083058</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/liubenlong007/article/details/78143285">https://blog.csdn.net/liubenlong007/article/details/78143285</a></p>
 
                 
             </div>
@@ -562,7 +610,7 @@ Java --&gt; IO编程
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://blog.nianxi.cc/2023/12/31/java-competence-framewor/">https://blog.nianxi.cc/2023/12/31/java-competence-framewor/</a>
+                    <a href="https://blog.nianxi.cc/2024/01/01/Java%E8%83%BD%E5%8A%9B%E6%A1%86%E6%9E%B6%E4%B9%8BJVM%E8%B0%83%E4%BC%98/">https://blog.nianxi.cc/2024/01/01/Java%E8%83%BD%E5%8A%9B%E6%A1%86%E6%9E%B6%E4%B9%8BJVM%E8%B0%83%E4%BC%98/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -951,6 +999,55 @@ Java --&gt; IO编程
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
+                <a href="/2024/01/01/Java%E8%83%BD%E5%8A%9B%E6%A1%86%E6%9E%B6%E4%B9%8BJVM%E5%8E%9F%E7%90%86/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="Java能力框架之JVM原理">
+                        
+                        <span class="card-title">Java能力框架之JVM原理</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2024-01-01
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Java/" class="post-category">
+                                    Java
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Java/">
+                        <span class="chip bg-color">Java</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
                 <a href="/2024/01/01/sarah-index/">
                     <div class="card-image">
                         
@@ -967,9 +1064,9 @@ Java --&gt; IO编程
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2024-01-01
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2024-01-01
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -987,56 +1084,6 @@ Java --&gt; IO编程
                     
                     <a href="/tags/Sarah/">
                         <span class="chip bg-color">Sarah</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                本篇&nbsp;<i class="far fa-dot-circle"></i>
-            </div>
-            <div class="card">
-                <a href="/2023/12/31/java-competence-framewor/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="Java能力框架">
-                        
-                        <span class="card-title">Java能力框架</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            
-                        
-                    </div>
-                    <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-12-31
-                            </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/Java/" class="post-category">
-                                    Java
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/Java/">
-                        <span class="chip bg-color">Java</span>
                     </a>
                     
                 </div>
