@@ -6,7 +6,7 @@
   <link href="https://blog.nianxi.cc/atom.xml" rel="self"/>
   
   <link href="https://blog.nianxi.cc/"/>
-  <updated>2024-01-01T11:11:46.389Z</updated>
+  <updated>2024-01-01T16:08:44.628Z</updated>
   <id>https://blog.nianxi.cc/</id>
   
   <author>
@@ -18,21 +18,20 @@
   
   <entry>
     <title>Java能力框架之JVM原理</title>
-    <link href="https://blog.nianxi.cc/2024/01/01/Java%E8%83%BD%E5%8A%9B%E6%A1%86%E6%9E%B6%E4%B9%8BJVM%E5%8E%9F%E7%90%86/"/>
-    <id>https://blog.nianxi.cc/2024/01/01/Java%E8%83%BD%E5%8A%9B%E6%A1%86%E6%9E%B6%E4%B9%8BJVM%E5%8E%9F%E7%90%86/</id>
+    <link href="https://blog.nianxi.cc/article/578523837.html"/>
+    <id>https://blog.nianxi.cc/article/578523837.html</id>
     <published>2024-01-01T09:54:07.308Z</published>
-    <updated>2024-01-01T11:11:46.389Z</updated>
+    <updated>2024-01-01T16:08:44.628Z</updated>
     
     
       
       
         
         
-    <summary type="html">&lt;h1&gt;JVM虚拟机模型: 一次编译，到处运行&lt;/h1&gt;
-&lt;div class=&quot;mermaid&quot;&gt;
-  graph TD
+    <summary type="html">&lt;h1&gt;JVM模型: 一次编译，到处运行&lt;/h1&gt;
+&lt;pre class=&quot;mermaid&quot;&gt;graph TD
 A[JAVA程序] --&amp;gt;  B[JAVA字节码]
-B[JAVA字节码] -- 解释 --&amp;gt; C[Window Java虚拟机]</summary>
+B[JAVA字节码] -- 解释 --&amp;gt; C[Window Java虚拟机] --机器码--&amp;gt;</summary>
         
       
     
@@ -47,10 +46,10 @@ B[JAVA字节码] -- 解释 --&amp;gt; C[Window Java虚拟机]</summary>
   
   <entry>
     <title>Java能力框架之JVM调优</title>
-    <link href="https://blog.nianxi.cc/2024/01/01/Java%E8%83%BD%E5%8A%9B%E6%A1%86%E6%9E%B6%E4%B9%8BJVM%E8%B0%83%E4%BC%98/"/>
-    <id>https://blog.nianxi.cc/2024/01/01/Java%E8%83%BD%E5%8A%9B%E6%A1%86%E6%9E%B6%E4%B9%8BJVM%E8%B0%83%E4%BC%98/</id>
+    <link href="https://blog.nianxi.cc/article/1531152183.html"/>
+    <id>https://blog.nianxi.cc/article/1531152183.html</id>
     <published>2024-01-01T09:52:42.754Z</published>
-    <updated>2024-01-01T11:11:44.887Z</updated>
+    <updated>2024-01-01T14:56:54.051Z</updated>
     
     
       
@@ -74,10 +73,10 @@ B[JAVA字节码] -- 解释 --&amp;gt; C[Window Java虚拟机]</summary>
   
   <entry>
     <title>Sarah小站首页</title>
-    <link href="https://blog.nianxi.cc/2024/01/01/sarah-index/"/>
-    <id>https://blog.nianxi.cc/2024/01/01/sarah-index/</id>
+    <link href="https://blog.nianxi.cc/article/453215639.html"/>
+    <id>https://blog.nianxi.cc/article/453215639.html</id>
     <published>2023-12-31T19:08:07.000Z</published>
-    <updated>2023-12-31T19:15:40.662Z</updated>
+    <updated>2024-01-01T14:56:54.051Z</updated>
     
     
       
@@ -100,10 +99,10 @@ B[JAVA字节码] -- 解释 --&amp;gt; C[Window Java虚拟机]</summary>
   
   <entry>
     <title>Java能力框架</title>
-    <link href="https://blog.nianxi.cc/2023/12/31/java-competence-framewor/"/>
-    <id>https://blog.nianxi.cc/2023/12/31/java-competence-framewor/</id>
+    <link href="https://blog.nianxi.cc/article/2914746800.html"/>
+    <id>https://blog.nianxi.cc/article/2914746800.html</id>
     <published>2023-12-31T06:24:53.467Z</published>
-    <updated>2023-12-31T16:17:25.339Z</updated>
+    <updated>2024-01-01T14:56:54.051Z</updated>
     
     
       

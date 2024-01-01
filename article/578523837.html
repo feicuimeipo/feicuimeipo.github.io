@@ -5,11 +5,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="java">
-    <meta name="description" content="JVM虚拟机模型: 一次编译，到处运行
-
-  graph TD
-A[JAVA程序] --&amp;gt;  B[JAVA字节码]
-B[JAVA字节码] -- 解释 --&amp;gt; C[Window Java虚拟机] --机器码--&amp;gt; E[win">
+    <meta name="description" content="JVM模型: 一次编译，到处运行、java程序执行流程、JVM基本结构。java程序经过一次编译之后，将java代码编译为字节码也就是class文件，然后在不同的操作系统上依靠不同的java虚拟机进行解释，最后再转换为不同平台的机器码，最终得到执行。">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -18,6 +14,7 @@ B[JAVA字节码] -- 解释 --&amp;gt; C[Window Java虚拟机] --机器码--&amp;
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="referrer" content="no-referrer-when-downgrade">
+	<mate name="baidu-site-verification" content="你的token">
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
@@ -56,7 +53,9 @@ B[JAVA字节码] -- 解释 --&amp;gt; C[Window Java虚拟机] --机器码--&amp;
 
     <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
 
-<meta name="generator" content="Hexo 7.0.0">
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.0.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 <link rel="alternate" href="/atom.xml" title="🐘 _山海博客" type="application/atom+xml">
 </head>
@@ -363,7 +362,7 @@ B[JAVA字节码] -- 解释 --&amp;gt; C[Window Java虚拟机] --机器码--&amp;
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2024-01-01
+                    2024-01-02
                 </div>
                 
 
@@ -400,46 +399,38 @@ B[JAVA字节码] -- 解释 --&amp;gt; C[Window Java虚拟机] --机器码--&amp;
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1>JVM虚拟机模型: 一次编译，到处运行</h1>
-<div class="mermaid">
-  graph TD
+                <h1>JVM模型: 一次编译，到处运行</h1>
+<pre class="mermaid">graph TD
 A[JAVA程序] --&gt;  B[JAVA字节码]
 B[JAVA字节码] -- 解释 --&gt; C[Window Java虚拟机] --机器码--&gt; E[windows操作系统]
-B[JAVA字节码] -- 解释 --&gt; D[Linux Java虚拟机] --机器码--&gt; F[Linux操作系统]
-
-</div>
-
+B[JAVA字节码] -- 解释 --&gt; D[Linux Java虚拟机] --机器码--&gt; F[Linux操作系统]</pre>
 <p>java程序经过一次编译之后，将java代码编译为字节码也就是class文件，然后在不同的操作系统上依靠不同的java虚拟机进行解释，最后再转换为不同平台的机器码，最终得到执行。</p>
 <h1>java程序执行流程</h1>
-<div class="mermaid">
-  graph LR
-A[JAVA代码] --&gt; B[JAVA字节码-class文件] --&gt; C[JAVA HelloWorld] --&gt; D[加载配置JVM.cfg] --&gt; E[根据JVM.cfg找到jvm.dll] --&gt; F[初始化JVM,运行Java程序]  --&gt; G[找到main方法并运行]
-
-</div>
-
-<p><strong>【编译Java代码】</strong></p>
+<pre class="mermaid">graph LR
+A[JAVA代码] --&gt; B[JAVA字节码-class文件] --&gt; C[JAVA HelloWorld] --&gt; D[加载配置JVM.cfg] --&gt; E[根据JVM.cfg找到jvm.dll] --&gt; F[初始化JVM,运行Java程序]  --&gt; G[找到main方法并运行]</pre>
+<h3 id="编译Java代码">编译Java代码</h3>
 <p>java代码通过编译之后生成字节码文件（class文件）。这个过程由JAVA编译器完成。</p>
-<p><strong>【运行 <code>java HelloWorld</code> 指令】</strong></p>
+<h3 id="运行-java-HelloWorld-指令">运行 <code>java HelloWorld</code> 指令</h3>
 <p>运行<code>java HelloWorld</code>执行java程序，java会根据系统版本找到jvm.cfg，由该文件找到对应的JVM编译命令，对java程序进行编译。其中<code>$\JAVA_HOME\jre\lib${amd64}\jvm.cfg</code> 大致内容长这样：</p>
-<figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">Copyright (c) 2003, 2013, Oracle and/or its affiliates. All rights reserved.</span> </span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">You may also <span class="keyword">select</span> a JVM <span class="keyword">in</span> an arbitrary location with the</span> </span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash"><span class="string">"-XXaltjvm=&lt;jvm_dir&gt;"</span> option, but that too is unsupported</span> </span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">and may not be available <span class="keyword">in</span> a future release.</span> </span><br><span class="line"></span><br><span class="line">-Xms 1024</span><br><span class="line">-server KNOWN</span><br><span class="line">-client IGNORE</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight shell"><table><tbody><tr><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">Copyright (c) 2003, 2013, Oracle and/or its affiliates. All rights reserved.</span> </span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">You may also <span class="keyword">select</span> a JVM <span class="keyword">in</span> an arbitrary location with the</span> </span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash"><span class="string">"-XXaltjvm=&lt;jvm_dir&gt;"</span> option, but that too is unsupported</span> </span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">and may not be available <span class="keyword">in</span> a future release.</span> </span><br><span class="line"></span><br><span class="line">-Xms 1024</span><br><span class="line">-server KNOWN</span><br><span class="line">-client IGNORE</span><br></pre></td></tr></tbody></table></figure>
 <blockquote>
 <p>server KNOWN 和 client IGNORE：分别说明当前JVM运行于服务端模型，而不是客户端模型 即 server KNOWN 就表示名称为server的jvm可用, 且如笔者主机下的地方找到对应的jvm.dll<br>
 …\JetBrains\IntelliJ IDEA…\jbr\bin\server\jvm.dll<br>
 …\Java\jre\bin\server\jvm.dll …</p>
 </blockquote>
-<p><strong>【JVM.cfg】</strong></p>
+<h3 id="JVM-cfg">JVM.cfg</h3>
 <p>jvm.dll则是java虚拟机的主要实现。</p>
-<p>【<strong>运行程序</strong>】</p>
+<h3 id="运行程序">运行程序</h3>
 <p>通过JNI接口（它还常用于java与操作系统、硬件交互），找到class文件后并装载进JVM，然后找到main方法，最后执行。</p>
 <h1>JVM基本结构</h1>
 <p>JVM是可运行Java代码的假想计算机 ，包括一套字节码指令集、一组寄存器、一个栈、一个垃圾回收，堆 和 一个存储方法域。JVM是运行在操作系统之上的，它与硬件没有直接的交互。下图是JVM的基本结构：</p>
-<p><img src="Java%E8%83%BD%E5%8A%9B%E6%A1%86%E6%9E%B6%E4%B9%8BJVM%E5%8E%9F%E7%90%86.assets/image-20240101182525778.png" alt="image-20240101182525778"></p>
+<p><img src="/article/578523837/image-20240101193802898.png" alt=""></p>
 <p>class文件被jvm装载以后，经过jvm的内存空间调配，最终是由执行引擎完成class文件的执行。当然这个过程还有其他角色模块的协助，这些模块协同配合才能让一个java程序成功的运行，下面就详细介绍这些模板，它们也是后面<strong>学习jvm最重要的部分</strong>。</p>
-<p>【<strong>内存空间</strong>】</p>
+<h2 id="内存空间">内存空间</h2>
 <p>JVM内存空间包含：方法区、java堆、java栈、本地方法栈。</p>
-<p>【<strong>方法区</strong>】</p>
+<h2 id="方法区">方法区</h2>
 <p>方法区是各个线程共享的区域，存放类信息、常量、静态变量。</p>
-<p>【<strong>java堆</strong>】</p>
+<h2 id="java堆">java堆</h2>
 <p>java堆也是线程共享的区域，我们的类的实例就放在这个区域。</p>
 <p>可以想象你的一个系统会产生很多实例，因此java堆的空间也是最大的。如果java堆空间不足了，程序会抛出OutOfMemoryError异常。</p>
 <p><strong>堆内存划分</strong>：</p>
@@ -456,7 +447,7 @@ JDK 1.8以后Java 堆主要分为2个区域-年轻代与老年代，年轻代包
 <blockquote>
 <p>JDK 1.8以后不再用永久带，永久代已经不存在，存储的类信息、编译后的代码数据等已经移动到了元空间（MetaSpace）中，元空间并没有处于堆内存上，而是直接占用的本地内存（NativeMemory）。</p>
 </blockquote>
-<p>【<strong>java栈</strong>】</p>
+<h2 id="java栈">java栈</h2>
 <p>栈也叫栈内存，主管Java程序的运行，是在线程创建时创建，一个线程对应一个java栈，每执行一个方法就会往栈中压入一个元素。它的生命期是跟随线程的生命期，线程结束栈内存也就释放，对于栈来说不存在垃圾回收问题，只要线程一结束该栈就Over，生命周期和线程一致，是线程私有的。</p>
 <p>往栈中压入一个元素叫“栈帧”，而栈帧中包括了方法中的局部变量、用于存放中间状态值的操作栈。</p>
 <blockquote>
@@ -480,9 +471,9 @@ JDK 1.8以后Java 堆主要分为2个区域-年轻代与老年代，年轻代包
 <p>返回地址(Return Address)： 当一个方法被执行后，有两种方式退出该方法：执行引擎遇到了任意一个方法返回的字节码指令或遇到了异常，并且该异常没有在方法体内得到处理。方法退出的过程实际上等同于把当前栈帧出栈。</p>
 </li>
 </ol>
-<p>【<strong>本地方法栈</strong>】</p>
+<h2 id="本地方法栈">本地方法栈</h2>
 <p>本地方法栈角色和java栈类似，只不过它是用来表示执行本地方法的，本地方法栈存放的方法调用本地方法接口，最终调用本地方法库，实现与操作系统、硬件交互的目的。</p>
-<p>【<strong>PC寄存器</strong>】</p>
+<h2 id="PC寄存器">PC寄存器</h2>
 <p>PC寄存器的作用就是控制程序指令的执行顺序。执行引擎就是根据PC寄存器调配的指令顺序，依次执行程序指令。</p>
 <blockquote>
 <p>“类已经加载了，实例对象、方法、静态变量都去了自己该去的地方"，那么程序该怎么执行，哪个方法先执行，哪个方法后执行，这些指令执行的顺序就是PC寄存器在管。</p>
@@ -513,7 +504,7 @@ JDK 1.8以后Java 堆主要分为2个区域-年轻代与老年代，年轻代包
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://blog.nianxi.cc/2024/01/01/Java%E8%83%BD%E5%8A%9B%E6%A1%86%E6%9E%B6%E4%B9%8BJVM%E5%8E%9F%E7%90%86/">https://blog.nianxi.cc/2024/01/01/Java%E8%83%BD%E5%8A%9B%E6%A1%86%E6%9E%B6%E4%B9%8BJVM%E5%8E%9F%E7%90%86/</a>
+                    <a href="https://blog.nianxi.cc/article/578523837.html">https://blog.nianxi.cc/article/578523837.html</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -872,7 +863,7 @@ JDK 1.8以后Java 堆主要分为2个区域-年轻代与老年代，年轻代包
         appId: 'mHuBCqi55c2fbVfnclSExp3n-gzGzoHsz',
         appKey: 'LMInvIagUHK1LeTWJKF4x2Yw',
         serverURLs: 'https://mhubcqi5.lc-cn-n1-shared.com',
-        notify: 'false' === 'true',
+        notify: 'true' === 'true',
         verify: 'false' === 'true',
         visitor: 'true' === 'true',
         avatar: 'mm',
@@ -903,7 +894,7 @@ JDK 1.8以后Java 堆主要分为2个区域-年轻代与老年代，年轻代包
                 <i class="far fa-dot-circle"></i>&nbsp;本篇
             </div>
             <div class="card">
-                <a href="/2024/01/01/Java%E8%83%BD%E5%8A%9B%E6%A1%86%E6%9E%B6%E4%B9%8BJVM%E5%8E%9F%E7%90%86/">
+                <a href="/article/578523837.html">
                     <div class="card-image">
                         
                         
@@ -915,7 +906,7 @@ JDK 1.8以后Java 堆主要分为2个区域-年轻代与老年代，年轻代包
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            
+                            JVM模型: 一次编译，到处运行、java程序执行流程、JVM基本结构。java程序经过一次编译之后，将java代码编译为字节码也就是class文件，然后在不同的操作系统上依靠不同的java虚拟机进行解释，最后再转换为不同平台的机器码，最终得到执行。
                         
                     </div>
                     <div class="publish-info">
@@ -953,7 +944,7 @@ JDK 1.8以后Java 堆主要分为2个区域-年轻代与老年代，年轻代包
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2024/01/01/Java%E8%83%BD%E5%8A%9B%E6%A1%86%E6%9E%B6%E4%B9%8BJVM%E8%B0%83%E4%BC%98/">
+                <a href="/article/1531152183.html">
                     <div class="card-image">
                         
                         
@@ -1265,6 +1256,7 @@ JDK 1.8以后Java 堆主要分为2个区域-年轻代与老年代，年轻代包
 </footer>
 
 <div class="progress-bar"></div>
+
 
 
     <!-- 搜索遮罩框 -->
