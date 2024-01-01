@@ -6,7 +6,7 @@
   <link href="https://blog.nianxi.cc/atom.xml" rel="self"/>
   
   <link href="https://blog.nianxi.cc/"/>
-  <updated>2024-01-01T19:11:03.881Z</updated>
+  <updated>2024-01-01T20:13:57.355Z</updated>
   <id>https://blog.nianxi.cc/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://blog.nianxi.cc/article/2348287028.html"/>
     <id>https://blog.nianxi.cc/article/2348287028.html</id>
     <published>2024-01-01T18:57:28.334Z</published>
-    <updated>2024-01-01T19:11:03.881Z</updated>
+    <updated>2024-01-01T20:13:57.355Z</updated>
     
     
       
@@ -43,6 +43,8 @@
     
     <category term="PyTorch" scheme="https://blog.nianxi.cc/tags/PyTorch/"/>
     
+    <category term="机器学习" scheme="https://blog.nianxi.cc/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
   </entry>
   
   <entry>
@@ -50,7 +52,7 @@
     <link href="https://blog.nianxi.cc/article/1499102559.html"/>
     <id>https://blog.nianxi.cc/article/1499102559.html</id>
     <published>2024-01-01T17:48:08.626Z</published>
-    <updated>2024-01-01T19:11:15.125Z</updated>
+    <updated>2024-01-01T20:13:59.238Z</updated>
     
     
       
@@ -75,17 +77,17 @@
     <link href="https://blog.nianxi.cc/article/578523837.html"/>
     <id>https://blog.nianxi.cc/article/578523837.html</id>
     <published>2024-01-01T09:54:07.308Z</published>
-    <updated>2024-01-01T16:08:44.628Z</updated>
+    <updated>2024-01-01T20:12:30.575Z</updated>
     
     
       
       
         
         
-    <summary type="html">&lt;h1&gt;JVM模型: 一次编译，到处运行&lt;/h1&gt;
+    <summary type="html">&lt;h2 id=&quot;JVM模型-一次编译，到处运行&quot;&gt;JVM模型: 一次编译，到处运行&lt;/h2&gt;
 &lt;pre class=&quot;mermaid&quot;&gt;graph TD
 A[JAVA程序] --&amp;gt;  B[JAVA字节码]
-B[JAVA字节码] -- 解释 --&amp;gt; C[Window Java虚拟机] --机器码--&amp;gt;</summary>
+B[JAVA字节码] -- 解释 --&amp;gt; C[Window</summary>
         
       
     
@@ -103,7 +105,7 @@ B[JAVA字节码] -- 解释 --&amp;gt; C[Window Java虚拟机] --机器码--&amp;
     <link href="https://blog.nianxi.cc/article/1531152183.html"/>
     <id>https://blog.nianxi.cc/article/1531152183.html</id>
     <published>2024-01-01T09:52:42.754Z</published>
-    <updated>2024-01-01T14:56:54.051Z</updated>
+    <updated>2024-01-01T20:12:28.276Z</updated>
     
     
       
@@ -111,8 +113,7 @@ B[JAVA字节码] -- 解释 --&amp;gt; C[Window Java虚拟机] --机器码--&amp;
         
         
     <summary type="html">&lt;p&gt;操作系统级别Java进程所占用的内存数值不能准确的反应堆内存的真实占用情况，因为GC过后这个值是不会变化的，内存调优的时候要更多地使用JDK提供的内存查看工具，比如JConsole和Java VisualVM。&lt;/p&gt;
-&lt;h1&gt;Full GC&lt;/h1&gt;
-&lt;h2</summary>
+&lt;h2 id=&quot;Full-GC&quot;&gt;Full</summary>
         
       
     
@@ -130,7 +131,7 @@ B[JAVA字节码] -- 解释 --&amp;gt; C[Window Java虚拟机] --机器码--&amp;
     <link href="https://blog.nianxi.cc/article/453215639.html"/>
     <id>https://blog.nianxi.cc/article/453215639.html</id>
     <published>2023-12-31T19:08:07.000Z</published>
-    <updated>2024-01-01T17:52:42.833Z</updated>
+    <updated>2024-01-01T19:49:35.877Z</updated>
     
     
       
@@ -156,7 +157,7 @@ B[JAVA字节码] -- 解释 --&amp;gt; C[Window Java虚拟机] --机器码--&amp;
     <link href="https://blog.nianxi.cc/article/2914746800.html"/>
     <id>https://blog.nianxi.cc/article/2914746800.html</id>
     <published>2023-12-31T06:24:53.467Z</published>
-    <updated>2024-01-01T14:56:54.051Z</updated>
+    <updated>2024-01-01T20:13:51.958Z</updated>
     
     
       
