@@ -1,6 +1,6 @@
 ---
 title: Java能力框架之JVM原理
-categories: Java
+categories: Java系列
 author: _山海
 mathjax: false
 tags:
