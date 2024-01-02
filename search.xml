@@ -13,16 +13,18 @@
       
       <categories>
           
-          <category> PyTorch实战 </category>
+          <category> PyTorch系列 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> PyTorch </tag>
-            
             <tag> 机器学习 </tag>
+            
+            <tag> AI </tag>
+            
+            <tag> 人工智能 </tag>
             
         </tags>
       
@@ -40,7 +42,7 @@
       
       <categories>
           
-          <category> PyTorch实战 </category>
+          <category> PyTorch系列 </category>
           
       </categories>
       
@@ -48,6 +50,8 @@
         <tags>
             
             <tag> PyTorch </tag>
+            
+            <tag> Python </tag>
             
         </tags>
       
