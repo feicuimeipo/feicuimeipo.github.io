@@ -686,7 +686,7 @@
 <p><strong>稠密的张量定义方法</strong></p>
 <figure class="highlight python"><table><tbody><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"><span class="comment"># GPU</span></span><br><span class="line"><span class="comment"># GPU则代码改为： dev = torch.device("cuda:0")</span></span><br><span class="line">dev = torch.device(<span class="string">"cpu"</span>)</span><br><span class="line">a = torch.tensor([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>], dtype=torch.float32,device=dev)</span><br><span class="line"><span class="built_in">print</span>(a)</span><br></pre></td></tr></tbody></table></figure>
 <h4 id="稀疏的张量"><strong>稀疏的张量</strong></h4>
-<p>稀疏或低秩：是机器学习中两个很重要的概念，描述了当前数据是否满足某种性质</p>
+<p><strong>稀疏或低秩</strong>是机器学习中两个很重要的概念，描述了当前数据是否满足某种性质</p>
 <ul>
 <li>
 <p>稀疏表达了当前数据中，非0元素的个数，非0元素的个数越少，说明越稀疏。如果全部为0，则说明最稀疏。</p>
@@ -695,12 +695,12 @@
 <p>低秩描述了数据本身的关联性，也是线性代码中的一个概念。<strong>秩</strong>从线性相关的角度来看，主要是描述了当前矩阵中的向量间线性可表示的关系。</p>
 </li>
 </ul>
-<p><strong>稀疏的机器学习中的好处</strong></p>
+<p><strong>稀疏的张量在机器学习中的优势</strong></p>
 <ul>
 <li>从模型角度：能够使<strong>模型</strong>变的非常简单。对于有参数的模型，如果参数中0的个数非常多，意味着可以对模型进行简化。即参数为0的项(item) 是可以减掉的，因为0乘以任何数都等于0。这样参数个数变少，意味着模型变的更简单，对于参数稀疏化的约束在机器学习中是一个非常重要的性质。这是我们从机器学习模型的角度上介绍稀疏的意义。</li>
 <li>从数据角度，通过对数据进行稀疏化的表示，可以减少数据在内存中的开销。假设存在一个100*100的矩阵，哪果用稠密方式表示数据，则需要100**100单位的空间，而如果用稀疏张量表示，我们只要记住非0元素的坐标即可。</li>
 </ul>
-<p><strong>torch.sparse_coo_tensor</strong></p>
+<p><strong><code>torch.sparse_coo_tensor</code></strong></p>
 <p>PyTorch中用<code>torch.sparse_coo_tensor</code> 表示稀疏矩阵。使用<code>torch.sparse_coo_tenso</code>r可以方便地将稀疏矩阵转换为PyTorch张量，并进行各种操作。同时，由于只存储了非零元素的位置和值，因此可以节省大量的内存空间。</p>
 <blockquote>
 <p>名称是 'coo’代表非零元素的坐标。即<strong>coo类型</strong>:  coo类型表示了非零元素的坐标形式</p>
