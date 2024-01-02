@@ -22,13 +22,13 @@ menu:
 #  友链:
 #    url: /friends
 #    icon: fas fa-address-book
-#  Projects:
-#    #url: /projects
-#    icon: fas fa-screencast
-#    children:
-#      - name: 可视化大屏
-#        url: https://feicuimeipo.github.io/canvas/
-#        icon: fas fa-screencast
+  Projects:
+    #url: /projects
+    icon: fas fa-screencast
+    children:
+      - name: DataCanvas
+        url: https://feicuimeipo.github.io/canvas/
+        icon: fas fa-screencast
       #- name: 大模型子站
       #  url: https://www.nianxi.cc/llm/
       #  icon: fas fa-AI
