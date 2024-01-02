@@ -6,7 +6,8 @@
     <meta charset="utf-8">
     <meta name="keywords" content="PyTorch, TensorFlow,PyTorch入门">
     <meta name="description" content="PyTorch介绍
-Facebook人工智能研究员(FAIR)于2017年在Github上开源。PyTorch前身是torch，torch之前并非是主流语言编写，基于主流语言与受众群体，factbook采用了python对torch框架进行">
+
+PyTorch是Facebook人工智能研究员(FAIR)于2017年在Github上开源，前身是Torch。Torch并非是用主流语言编写，考虑到AI行业主流语言与受众群体，factbook用Python对Torch">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -370,7 +371,7 @@ Facebook人工智能研究员(FAIR)于2017年在Github上开源。PyTorch前身�
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    617
+                    653
                 </div>
                 
 
@@ -401,10 +402,9 @@ Facebook人工智能研究员(FAIR)于2017年在Github上开源。PyTorch前身�
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <h2 id="PyTorch介绍">PyTorch介绍</h2>
-<p>Facebook人工智能研究员(FAIR)于2017年在Github上开源。PyTorch前身是torch，torch之前并非是主流语言编写，基于主流语言与受众群体，factbook采用了python对torch框架进行重构，但pytorch底层也用到了c/c++但其提供了python的接口，因此可以很便利的用python调整整个框架，来完成深度学习的模型搭建，并利用这些模型来解决实际问题。</p>
-<pre class="mermaid">graph LR
-Torch --&gt; PyTorch</pre>
-<h3 id="PyTorch与TensorFlow比较"><strong>PyTorch与TensorFlow比较</strong></h3>
+<p><img src="/article/1499102559/image-20240103050628116.png" alt=""></p>
+<p>PyTorch是Facebook人工智能研究员(FAIR)于2017年在Github上开源，前身是Torch。Torch并非是用主流语言编写，考虑到AI行业主流语言与受众群体，factbook用Python对Torch框架进行重构，虽然pytorch有某些底层功能也用到了c/c++写的，但pytorch都给这些功能提供了python的接口，这样可以让程序员很方便的用python调用PyTorch整个框架的功能，以此来完成深度学习的模型搭建，并利用这些模型来解决实际问题。</p>
+<p>**Pytorch vs ** <strong>TensorFlow</strong></p>
 <table>
 <thead>
 <tr>
@@ -420,11 +420,6 @@ Torch --&gt; PyTorch</pre>
 </tbody>
 </table>
 <blockquote>
-<p>Pytorch如果要做部署，需要用到Python的flask等来完成部，现在有fastAPI</p>
-<p>TensorFlow的TF serving直接完成部署，在资源调度上更好一些，在模型部署时比较好。</p>
-<p>建议时间足够的话，两者都学习</p>
-</blockquote>
-<h3 id="静态图与动态图"><strong>静态图与动态图</strong></h3>
 <p><strong>什么是动态图与静态图</strong></p>
 <ul>
 <li>
@@ -434,9 +429,28 @@ Torch --&gt; PyTorch</pre>
 <p>静态图: 先搭建计算图，后运行，允许编译器进行优化</p>
 </li>
 </ul>
-<p><strong>torch编程: 编程与调试都比较简单</strong></p>
+</blockquote>
+<p><strong>部署方式</strong></p>
+<ul>
+<li>
+<p>Pytorch如果要做部署，需要用到Python的fastAPI等来完成部（也可直接用Starlette。FastAPI也是基于Starlette，适用于高并发）</p>
+</li>
+<li>
+<p>TensorFlow的TF serving直接完成部署，在资源调度上更好一些，在模型部署时比较好。</p>
+</li>
+<li>
+<p>学习建议：时间足够的话，两者都学习；时间不够，学pytorch。</p>
+</li>
+</ul>
+<p><strong>torch编程</strong></p>
+<blockquote>
+<p>编程与调试都比较简单</p>
+</blockquote>
 <figure class="highlight python"><table><tbody><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> torch</span><br><span class="line">A = torch.Tensor([<span class="number">0</span>])</span><br><span class="line">B = torch.Tensor([<span class="number">10</span>])</span><br><span class="line"><span class="keyword">while</span>(A&lt;B)[O]:</span><br><span class="line">   A += <span class="number">2</span></span><br><span class="line">   B+=<span class="number">1</span></span><br><span class="line">   <span class="built_in">print</span>(A)</span><br><span class="line">   <span class="built_in">print</span>(B)</span><br></pre></td></tr></tbody></table></figure>
-<p><strong>TensorFlow编程:</strong>  <strong>静态图在编译时，可以被编译器进行一些优化操作; 代码编译复杂，调试不直观。</strong></p>
+<p><strong>TensorFlow编程:</strong></p>
+<blockquote>
+<p>静态图在编译时，可以被编译器进行一些优化操作; 代码编译复杂，调试不直观</p>
+</blockquote>
 <figure class="highlight python"><table><tbody><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf</span><br><span class="line">A = tf.constant(<span class="number">0</span>)</span><br><span class="line">B = tf.constant(<span class="number">10</span>)</span><br><span class="line"><span class="keyword">def</span> <span class="title function_">cond</span>(<span class="params">A, B,*args</span>):</span><br><span class="line">    <span class="keyword">return</span> A &lt; B</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">body</span>(<span class="params">A, B</span>)</span><br><span class="line">	A = tf.add(A, <span class="number">2</span>)</span><br><span class="line">	B = tf.add(B <span class="number">1</span>)</span><br><span class="line">	<span class="keyword">return</span> A, B</span><br><span class="line"></span><br><span class="line">c1, c2 = tf.while_loop(cond, body,[A,B])</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> tf.Session() <span class="keyword">as</span> sess:</span><br><span class="line">	A res, B res = sess.run([c1, c2])</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(A res)</span><br><span class="line"><span class="built_in">print</span>(B res)</span><br></pre></td></tr></tbody></table></figure>
 <h2 id="安装与搭建PyTorch的环境">安装与搭建PyTorch的环境</h2>
 <p>笔者的文章：<a target="_blank" rel="noopener" href="https://juejin.cn/post/7290494120207319092">Python+PyTorch+Anaconda安装配置</a></p>
@@ -451,7 +465,6 @@ Torch --&gt; PyTorch</pre>
 <p>变量在机器学习中是一个非常重要的概念，在我们的机器学习中，我们需要用变量来表达参数。在机器学习中，我们想要去求解的模型，刚开始模型参数是未知的，这些未知的参数就是<strong>变量</strong>。</p>
 <h3 id="nn-Module">nn.Module</h3>
 <p>nn.Module用来解决计算机视觉等任务会用到一些网络结构，这些网络结构是搭建深度学习、模型所需要用到的一个个积木元素。</p>
-<h3 id=""></h3>
 
                 
             </div>
