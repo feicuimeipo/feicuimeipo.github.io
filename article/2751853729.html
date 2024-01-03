@@ -380,14 +380,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    3.8k
+                    5.1k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    15 分
+                    20 分
                 </div>
                 
                 
@@ -736,17 +736,155 @@
 <p>​                           （2,0）  （2,1） （2,2） ]</p>
 <p><strong>数据正好在对角线</strong></p>
 </blockquote>
+<h3 id="Tensor的算术运算">Tensor的算术运算</h3>
+<h4 id="基础运算">基础运算</h4>
+<table>
+<thead>
+<tr>
+<th>四则运算</th>
+<th>其他运算</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>加减乘除<br>矩阵运算<br>…</td>
+<td>幂运算<br>对数运算<br>…</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<ul>
+<li>
+<p>ceil/round/floor/trunc 上取整/四舍五入/下取整/只保留整数部分 - 如<code>torch.ceil(input, out=None)</code></p>
+</li>
+<li>
+<p>clamp(input, min, max) <strong>超过min和max部分截断</strong> - <code>torch.clamp(input, min, max, out=None)</code></p>
+</li>
+<li>
+<p>torch.abs(input, out=None)  求绝对值</p>
+</li>
+<li>
+<p>torch.sqrt(input, out=None)  开方</p>
+</li>
+<li>
+<p><strong>torch.exp(input, out=None) e指数，注意只支持浮点型</strong></p>
+</li>
+<li>
+<p><strong>torch.log(input, out=None) 以e为底</strong></p>
+</li>
+<li>
+<p>…</p>
+</li>
+</ul>
+</blockquote>
+<p><strong>加减法运算</strong></p>
+<figure class="highlight python"><table><tbody><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"></span><br><span class="line">a = torch.rand(<span class="number">2</span>, <span class="number">3</span>)</span><br><span class="line">b = torch.rand(<span class="number">2</span>, <span class="number">3</span>)</span><br><span class="line">c = a + b  <span class="comment"># a - b ,</span></span><br><span class="line"><span class="built_in">print</span>(c)</span><br><span class="line">c = torch.add(a, b)  <span class="comment"># 减法sub</span></span><br><span class="line"><span class="built_in">print</span>(c)</span><br><span class="line"><span class="built_in">print</span>(a.add(b)) <span class="comment"># 减法sub，</span></span><br><span class="line"><span class="comment"># a.add_(b)  # sub_(...)， 带下划线的方式，运算后将结果同时赋给a。加减乘除等运算中含有下划线"_"的规则都一样。</span></span><br><span class="line"><span class="built_in">print</span>(a) </span><br></pre></td></tr></tbody></table></figure>
+<blockquote>
+<p>减法：- / …sub() / …sub_()<br>
+乘法: * / <code> c = torch.mul(a,b)</code>  /<code>a.mul(b)</code>  /<code>a.mul_(b)</code></p>
+</blockquote>
+<p><strong>哈达玛积(element wise，对应元素相乘) - mul乘法</strong> 如果一个tensor是shape是<code>2 * 2</code> 的话，则另外一个tensor也是<code>(2 * 2)</code>,  这样保证所有元素都保证每个元素都可以被相乘。</p>
+<figure class="highlight python"><table><tbody><tr><td class="code"><pre><span class="line">c = a * b</span><br><span class="line">c = torch.mul(a, b) <span class="comment"># a和b的shape要一样的</span></span><br><span class="line">a.mul(b)</span><br><span class="line">a.mul_(b) <span class="comment"># 同时将结果赋给a</span></span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight python"><table><tbody><tr><td class="code"><pre><span class="line">c = a / b</span><br><span class="line">c = torch.div(a, b) <span class="comment"># a和b的shape要一样的</span></span><br><span class="line">a.div(b)</span><br><span class="line">a.div_(b) <span class="comment"># 同时将结果赋给a</span></span><br></pre></td></tr></tbody></table></figure>
+<p>**二维矩阵的乘法运算 **包括<code>torch.mm(),torch.matmul(),@</code></p>
+<p>规则<code> a * b</code> 时，即两个矩阵相乘，<code>m * n</code>,  <code>n * p</code>, 一定要保证 两个矩阵的’<strong>n</strong>’是相同的。</p>
+<figure class="highlight python"><table><tbody><tr><td class="code"><pre><span class="line">a = torch.ones(<span class="number">2</span>,<span class="number">1</span>)</span><br><span class="line">b = torch.ones(<span class="number">1</span>,<span class="number">2</span>)</span><br><span class="line"><span class="built_in">print</span>(torch.mm(a,b))</span><br><span class="line"><span class="built_in">print</span>(torch.matmul(a,b))</span><br><span class="line"><span class="built_in">print</span>(a @ b)</span><br><span class="line"><span class="built_in">print</span>(a.matmul(b))</span><br><span class="line"><span class="built_in">print</span>(a.mm(b))</span><br></pre></td></tr></tbody></table></figure>
+<p><strong>高维矩阵的乘法运算</strong></p>
+<p>对于高维的<code>Tensor(dim&gt;2)</code>，假如矩阵的<code>size=(a1,a2,m,n)</code> ，我们要保证除最后两维<code>m,n</code>之外的前几维的值保持一致, 最后两维的规则同二维矩阵，即n相同 。就像矩阵的索引一样并且运算操只有``torch.matmul()`</p>
+<blockquote>
+<p>同样是除了矩阵内的数值之外，要保证维度的每个元素都可以被计算。<br>
+<code>mm</code>()与<code>matmul()</code>不存在下划线类的计算.。</p>
+</blockquote>
+<p>如下所示：<code>n</code>相同，<code>a,b</code>相同。</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">a = torch.ones(a, b, m, n)</span><br><span class="line">b = torch.ones(a, b, n, p)</span><br></pre></td></tr></tbody></table></figure>
+<p>举例：</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">a = torch.ones(1, 2, 4, 5)</span><br><span class="line">b = torch.ones(1, 2, 5, 3)</span><br><span class="line">print(a.matmul(b))</span><br><span class="line">print(torch.matmul(a, b))</span><br></pre></td></tr></tbody></table></figure>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/185249529">矩阵的乘除与逆运算</a></p>
+</blockquote>
+<p><strong>幂运算</strong></p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">a = torch.full((2, 3), fill_value=2)</span><br><span class="line">print(torch.pow(a, 2))</span><br><span class="line">print(a.pow(2))</span><br><span class="line">print(a ** 2)</span><br><span class="line">print(a.pow_(2))</span><br></pre></td></tr></tbody></table></figure>
+<p><strong>指数运算-e的n次方</strong><br>
+$$<br>
+y = e^n \ n∈R，y&gt;0，与y轴相交于(0,1)点<br>
+$$</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">a = torch.full((2, 3), fill_value=2)</span><br><span class="line">print(torch.exp(a))</span><br></pre></td></tr></tbody></table></figure>
+<blockquote>
+<p><strong>指数函数：<strong>函数y=a^x(a&gt;0且a≠1) 叫做</strong>指数函数</strong>，a是常数，x是自变量，定义域为R，值域为（0，+∞）。要求：a^x前的系数必须是数1，自变量x必须在指数的位置上，且不能是x的其他表达式，否则就不是指数函数。<strong>指数函数应用到自然常数e上写为exp(x)，现常写为e^x</strong>。</p>
+<ul>
+<li>a&gt;1时，则指数函数单调递增；若0&lt;a&lt;1，则为单调递减的。</li>
+</ul>
+<img src="/article/2751853729/image-20240103195933889.png" alt="image-20240103195933889" style="zoom:67%;">
+<ul>
+<li>对于a不大于0的情况，函数的定义域不连续，不考虑; a等于0函数无意义一般也不考虑。</li>
+<li>指数函数恒过（0，1）点，即水平直线y=1是从递减到递增的一个过渡位置。</li>
+<li>指数函数是非奇非偶函数。</li>
+</ul>
+<p><strong>exp(x)</strong>： y等于e的n次方是一种指数函数（表示为x=lny），其图像是单调递增，n∈R，y&gt;0，与y轴相交于（0,1）点。，图像位于X轴上方，第二象限无限接近X轴。</p>
+</blockquote>
+<p><strong>开方运算</strong></p>
+<figure class="highlight python"><table><tbody><tr><td class="code"><pre><span class="line">a = torch.full((<span class="number">2</span>, <span class="number">3</span>), fill_value=<span class="number">4</span>)</span><br><span class="line"><span class="built_in">print</span>(a.sqrt())</span><br><span class="line"></span><br><span class="line"><span class="comment"># ----返回值-----</span></span><br><span class="line">tensor([[<span class="number">2.</span>, <span class="number">2.</span>, <span class="number">2.</span>],</span><br><span class="line">        [<span class="number">2.</span>, <span class="number">2.</span>, <span class="number">2.</span>]])</span><br></pre></td></tr></tbody></table></figure>
+<p><strong>对数运算</strong></p>
+<p>对数源于指数，是指数函数反函数 因为：N = a<sup>x&nbsp;</sup>  所以：x = log(a<sup>N</sup>)</p>
+<p>如果 N=a^x（a&gt;0,a≠1），即<em>a</em>的<em>x</em>次方等于<em>N</em>（<em>a</em>&gt;0，且<em>a</em>≠1），那么数<em>x</em>叫做以<em>a</em>为底<em>N</em>的对数（logarithm），记作：x=log（a<sup>N</sup>）　其中，<em>a</em>叫做对数的底数，<em>N</em>叫做真数，<em>x</em>叫做 “以<em>a</em>为底<em>N</em>的对数”。</p>
+<blockquote>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s?__biz=MzIwNzA1NDkzMg==&amp;mid=2651391217&amp;idx=1&amp;sn=ca5a92928be3100b9f8565931b3c386f">对数运算规则</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_39852647/article/details/110869824">数据增长率怎么算</a> -  对数是用来衡量增长率的: 对数函数中，x是自变量，y是因变量，当x大于1时，对数函数是增函数，所以取对数就是增长率。</li>
+</ul>
+</blockquote>
+<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">a = torch.full((2, 3), fill_value=4)</span><br><span class="line">print(torch.log2(a))</span><br><span class="line">print(torch.log10(a))</span><br><span class="line">print(torch.log(a))</span><br></pre></td></tr></tbody></table></figure>
 <h3 id="Tensor的操作">Tensor的操作</h3>
-<blockquote>
-<p>待续</p>
-</blockquote>
+<ul>
+<li>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/a171232886/article/details/121458916"><strong>python、numpy、Pytorch中的索引方式</strong></a></p>
+</li>
+<li>
+<p>维度调整</p>
+<ul>
+<li>查看维度：<code>torch.shape</code></li>
+<li>变换维度：<code>torch.reshape([d0,d1,d2])</code></li>
+</ul>
+</li>
+<li>
+<p><code>unsqueeze</code>和<code>squeeze</code></p>
+<ul>
+<li>
+<p><code>b=a.squeeze(a)</code> 去掉维度值为1的维度</p>
+</li>
+<li>
+<p><code>b=a.unsqueeze(n)</code> 增加一个维度在shape的第n个</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">c = torch.rand(2, 3)</span><br><span class="line">c = c.unsqueeze(1)</span><br><span class="line">print(c.shape)</span><br></pre></td></tr></tbody></table></figure>
+</li>
+</ul>
+</li>
+<li>
+<p>两个tensor合并</p>
+<ul>
+<li><code>torch.cat(tensors, dim=0, out=None)</code></li>
+<li><code>torch.stack(tensors)</code>合并时候新建一个维度</li>
+</ul>
+</li>
+<li>
+<p>和神经网络相关，后面逐一展开</p>
+</li>
+</ul>
 <h3 id="与numpy互换">与numpy互换</h3>
-<blockquote>
-<p>待续</p>
-</blockquote>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/352877584">图解PyTorch中的torch.gather函数 - 知乎</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/lilai619/article/details/123083492">pytorch和numpy的互转</a> ，有以下几种方式：
+<ul>
+<li><code>torch.gather</code>对应的<code>numpy</code>操作：</li>
+<li><code>torch.view</code>对应的<code>numpy</code>操作</li>
+<li><code>torch.argmax</code>对应的<code>numpy</code>操作</li>
+<li><code>torch.max</code>对应的<code>numpy</code>操作</li>
+</ul>
+</li>
+</ul>
 <p><strong>参考</strong></p>
 <ul>
 <li><a target="_blank" rel="noopener" href="https://blog.csdn.net/hanmo22357/article/details/129524092">https://blog.csdn.net/hanmo22357/article/details/129524092</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/a171232886/article/details/123900387">https://blog.csdn.net/a171232886/article/details/123900387</a></li>
 </ul>
 
                 
@@ -1445,7 +1583,7 @@
 			
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">10k</span>
+                        class="white-color">11.3k</span>
             
             
 			
