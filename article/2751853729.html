@@ -523,33 +523,23 @@
 </tbody>
 </table>
 <h4 id="类型的常见操作">类型的常见操作</h4>
-<ul>
-<li>
 <p><strong>将普通张量类型转化为GPU张量类型的方法</strong>: <code>普通张量变量名.cuda()</code>, 返回一个GPU张量的引用。</p>
-</li>
-<li>
 <p><strong>Tensor默认的数据类型</strong></p>
 <ul>
 <li>默认的Tensor是FloatTensor（如果默认类型为GPU tensor，则所有操作都将在GPU上进行）。</li>
 <li><strong>设置默认的数据类型</strong>: <strong><code>torch.set_default_tensor_type(类型名)</code></strong></li>
 <li>增强学习中使用DoubleTensor的使用会更多</li>
 </ul>
-</li>
-<li>
 <p><strong>将张量转换为其他数据类型</strong></p>
 <ul>
 <li><strong>将张量转换为numpy数组</strong>：<code>张量名.numpy()</code></li>
 <li><strong>将只有一个元素的张量转换为标量</strong>：<code>张量名.item()</code>。</li>
 </ul>
-</li>
-<li>
 <p><strong>查看张量数据类型的方法</strong></p>
 <ul>
 <li><strong>type方法</strong>：使用<code>张量名.type()</code>可以查看张量的具体类型。</li>
-<li><strong>isinstance</strong>：isinstance是Python的自带函数。用法<code>isinstance(torch.randn(2,3),torch.FloatTensor)</code>，返回布尔值。</li>
+<li><strong>isinstance</strong>：<code>isinstance</code>是Python的自带函数。用法<code>isinstance(torch.randn(2,3),torch.FloatTensor)</code>，返回布尔值。</li>
 </ul>
-</li>
-<li>
 <p><strong>生成元素数据类型指定的张量</strong></p>
 <p><strong>浮点型张量</strong></p>
 <figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">tensor.FloatTensor(标量/列表/numpy数组)  # 生成元素均为单精度浮点型的张量</span><br><span class="line">tensor.DoubleTensor(标量/列表/numpy数组) # 生成元素均为双精度浮点型的张量</span><br><span class="line">tensor.HalfTensor(标量/列表/numpy数组)   # 生成元素均为半精度浮点型的张量</span><br></pre></td></tr></tbody></table></figure>
@@ -557,8 +547,6 @@
 <figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">tensor.IntTensor(标量/列表/numpy数组)    # 生成元素均为基本整型的张量</span><br><span class="line">tensor.ShortTensor(标量/列表/numpy数组)  # 生成元素均为短整型的张量</span><br><span class="line">tensor.LongTensor(标量/列表/numpy数组)   # 生成元素均为长整型的张量</span><br></pre></td></tr></tbody></table></figure>
 <p><strong>布尔型张量</strong></p>
 <figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">tensor.BoolTensor(标量/列表/numpy数组)   # 生成元素均为布尔类型的张量</span><br></pre></td></tr></tbody></table></figure>
-</li>
-</ul>
 <h3 id="Tensor的创建">Tensor的创建</h3>
 <blockquote>
 <p>加粗为常用</p>
@@ -628,7 +616,7 @@
 <blockquote>
 <p>正态分布或均匀分的区别： <a target="_blank" rel="noopener" href="https://www.zhihu.com/question/605668432/answer/3086800885?utm_id=0">https://www.zhihu.com/question/605668432/answer/3086800885?utm_id=0</a></p>
 </blockquote>
-<h4 id="函数补充">函数补充</h4>
+<h4 id="创建函数补充">创建函数补充</h4>
 <ul>
 <li><strong>生成不经过元素初始化的指定形状的张量</strong>：<code>torch.empty(维度1长度,维度2长度...)</code></li>
 <li><strong>生成元素服从0到1均匀分布的指定形状的张量</strong>：<code>torch.rand(维度1长度,维度2长度...)</code>。</li>
