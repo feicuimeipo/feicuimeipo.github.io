@@ -57,7 +57,7 @@ highlight:
   wrap: true
   hljs: false
 prismjs:
-  enable: true
+  enable: false
   preprocess: true
   line_number: false
   tab_replace: '' 
@@ -127,7 +127,7 @@ plugin:
   - hexo-generator-feed
   - hexo-generator-sitemap
   - hexo-generator-baidu-sitemap
-
+  
 baidusitemap:
   path: baidusitemap.xml
 sitemap:
@@ -151,6 +151,10 @@ githubEmojis:
   customEmojis:
 
   
+marked:
+  prependRoot: true
+  postAsset: true
+
 markdown:
   preset: 'default'
   render:
@@ -163,7 +167,7 @@ markdown:
     quotes: '“”‘’'
   enable_rules:
   disable_rules:
-  plugins:
+  plugins: 
   anchors:
     level: 2
     collisionSuffix: ''
