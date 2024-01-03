@@ -5,18 +5,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="PyTorch, TensorFlow,PyTorch入门">
-    <meta name="description" content="Tensor的理解
-数学中有标量、向量和矩阵的概念，它们的维度分别是0、1、2。其中：
-
-
-标量可以看成的一个数字，1，标量中元素的位置固定。
-
-
-向量可以看成是一维表格，向量中元素的位置需要通过其索引确定，表示为
-
-
-
-短阵可以看成是二维">
+    <meta name="description" content="Tensor的概念、在机器学习中的位置、稀疏张量与稠密张量、数学概念回忆、Tensor数据类型，代码实操等">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -417,7 +406,7 @@
 <p><img src="/article/2751853729/image-20240103024202117.png" alt=""></p>
 </li>
 <li>
-<p><strong>短阵</strong>可以看成是二维表格，矩阵中的元素位置需要通过其行号和列号确定，表示为</p>
+<p><strong>矩阵</strong>可以看成是二维表格，矩阵中的元素位置需要通过其行号和列号确定，表示为</p>
 <p><img src="/article/2751853729/image-20240103024033803.png" alt=""></p>
 </li>
 </ul>
@@ -449,7 +438,7 @@
 <li>属性：Tensor的属性</li>
 <li>运算：Tensor的算术运算</li>
 <li>操作：切片、索引、变型等</li>
-<li>numpy的互转：Tensor可以与numpy互换( <a href="https://blog.nianxi.cc/article/2348287033.html">numpy也可以用来描述样本与模型 </a> ）</li>
+<li>与<code>numpy</code>互转：Tensor可以与numpy互转</li>
 </ul>
 <h3 id="Tensor的类型-torch-dtype">Tensor的类型 - torch.dtype</h3>
 <p>张量（Tensor）是Pytorch库中的基本数据类型，在 Pytorch中各种基本数字类型都有其对应的Tensor类型（但在Pytorch中没有内嵌的字符串类型）。</p>
@@ -570,27 +559,6 @@
 <figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">tensor.BoolTensor(标量/列表/numpy数组)   # 生成元素均为布尔类型的张量</span><br></pre></td></tr></tbody></table></figure>
 </li>
 </ul>
-<h4 id="List-vs-Nparray">List vs Nparray</h4>
-<p>Numpy中的Nparray采用连续地址存储，原生list只能通过寻址方式找到下一种元素；</p>
-<p><img src="/article/2751853729/image-20240102223912335.png" alt=""></p>
-<p>这是因为Numpy制定了其存储的数据类型，可以统一分配内存空间，而List中的数据类型是确定的。</p>
-<ul>
-<li>
-<p>Nparray在科学计算方面性能远高于List, 可以省掉许多循环语句</p>
-</li>
-<li>
-<p>Nparray支持并行化运算，底层采用C语言编写，接触了Python解释器的性能限制，所以效率远高于纯Python代码</p>
-</li>
-</ul>
-<h4 id="Numpy-vs-Tensor">Numpy vs Tensor</h4>
-<p>Numpy和Tensor相比较，他们的区别如下：</p>
-<ul>
-<li>Tensor 和 Numpy都是矩阵，区别是前者可以在GPU上运行，后者只能在CPU上。</li>
-<li>Tensor可以直接通过print显示数据类型，而Numpy不可以。</li>
-</ul>
-<blockquote>
-<p><strong>在GPU上运行时:</strong>  Tensor内部的数据类型为ndarray，GPU不具有更改元素值的能力，这时Tensor内部元素的数值不可改变</p>
-</blockquote>
 <h3 id="Tensor的创建">Tensor的创建</h3>
 <blockquote>
 <p>加粗为常用</p>
@@ -737,7 +705,6 @@
 <p><strong>数据正好在对角线</strong></p>
 </blockquote>
 <h3 id="Tensor的算术运算">Tensor的算术运算</h3>
-<h4 id="基础运算">基础运算</h4>
 <table>
 <thead>
 <tr>
@@ -777,7 +744,7 @@
 </li>
 </ul>
 </blockquote>
-<p><strong>加减法运算</strong></p>
+<h4 id="加减法运算"><strong>加减法运算</strong></h4>
 <figure class="highlight python"><table><tbody><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"></span><br><span class="line">a = torch.rand(<span class="number">2</span>, <span class="number">3</span>)</span><br><span class="line">b = torch.rand(<span class="number">2</span>, <span class="number">3</span>)</span><br><span class="line">c = a + b  <span class="comment"># a - b ,</span></span><br><span class="line"><span class="built_in">print</span>(c)</span><br><span class="line">c = torch.add(a, b)  <span class="comment"># 减法sub</span></span><br><span class="line"><span class="built_in">print</span>(c)</span><br><span class="line"><span class="built_in">print</span>(a.add(b)) <span class="comment"># 减法sub，</span></span><br><span class="line"><span class="comment"># a.add_(b)  # sub_(...)， 带下划线的方式，运算后将结果同时赋给a。加减乘除等运算中含有下划线"_"的规则都一样。</span></span><br><span class="line"><span class="built_in">print</span>(a) </span><br></pre></td></tr></tbody></table></figure>
 <blockquote>
 <p>减法：- / …sub() / …sub_()<br>
@@ -786,10 +753,11 @@
 <p><strong>哈达玛积(element wise，对应元素相乘) - mul乘法</strong> 如果一个tensor是shape是<code>2 * 2</code> 的话，则另外一个tensor也是<code>(2 * 2)</code>,  这样保证所有元素都保证每个元素都可以被相乘。</p>
 <figure class="highlight python"><table><tbody><tr><td class="code"><pre><span class="line">c = a * b</span><br><span class="line">c = torch.mul(a, b) <span class="comment"># a和b的shape要一样的</span></span><br><span class="line">a.mul(b)</span><br><span class="line">a.mul_(b) <span class="comment"># 同时将结果赋给a</span></span><br></pre></td></tr></tbody></table></figure>
 <figure class="highlight python"><table><tbody><tr><td class="code"><pre><span class="line">c = a / b</span><br><span class="line">c = torch.div(a, b) <span class="comment"># a和b的shape要一样的</span></span><br><span class="line">a.div(b)</span><br><span class="line">a.div_(b) <span class="comment"># 同时将结果赋给a</span></span><br></pre></td></tr></tbody></table></figure>
-<p>**二维矩阵的乘法运算 **包括<code>torch.mm(),torch.matmul(),@</code></p>
+<h4 id="二维矩阵的乘法运算">二维矩阵的乘法运算</h4>
+<p>二维矩阵的乘法运算包括<code>torch.mm(),torch.matmul(),@</code></p>
 <p>规则<code> a * b</code> 时，即两个矩阵相乘，<code>m * n</code>,  <code>n * p</code>, 一定要保证 两个矩阵的’<strong>n</strong>’是相同的。</p>
 <figure class="highlight python"><table><tbody><tr><td class="code"><pre><span class="line">a = torch.ones(<span class="number">2</span>,<span class="number">1</span>)</span><br><span class="line">b = torch.ones(<span class="number">1</span>,<span class="number">2</span>)</span><br><span class="line"><span class="built_in">print</span>(torch.mm(a,b))</span><br><span class="line"><span class="built_in">print</span>(torch.matmul(a,b))</span><br><span class="line"><span class="built_in">print</span>(a @ b)</span><br><span class="line"><span class="built_in">print</span>(a.matmul(b))</span><br><span class="line"><span class="built_in">print</span>(a.mm(b))</span><br></pre></td></tr></tbody></table></figure>
-<p><strong>高维矩阵的乘法运算</strong></p>
+<h4 id="高维矩阵的乘法运算"><strong>高维矩阵的乘法运算</strong></h4>
 <p>对于高维的<code>Tensor(dim&gt;2)</code>，假如矩阵的<code>size=(a1,a2,m,n)</code> ，我们要保证除最后两维<code>m,n</code>之外的前几维的值保持一致, 最后两维的规则同二维矩阵，即n相同 。就像矩阵的索引一样并且运算操只有``torch.matmul()`</p>
 <blockquote>
 <p>同样是除了矩阵内的数值之外，要保证维度的每个元素都可以被计算。<br>
@@ -802,10 +770,10 @@
 <blockquote>
 <p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/185249529">矩阵的乘除与逆运算</a></p>
 </blockquote>
-<p><strong>幂运算</strong></p>
+<h4 id="幂运算"><strong>幂运算</strong></h4>
 <figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">a = torch.full((2, 3), fill_value=2)</span><br><span class="line">print(torch.pow(a, 2))</span><br><span class="line">print(a.pow(2))</span><br><span class="line">print(a ** 2)</span><br><span class="line">print(a.pow_(2))</span><br></pre></td></tr></tbody></table></figure>
-<p><strong>指数运算-e的n次方</strong><br>
-$$<br>
+<h4 id="指数运算-e的n次方"><strong>指数运算-e的n次方</strong></h4>
+<p>$$<br>
 y = e^n \ n∈R，y&gt;0，与y轴相交于(0,1)点<br>
 $$</p>
 <figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">a = torch.full((2, 3), fill_value=2)</span><br><span class="line">print(torch.exp(a))</span><br></pre></td></tr></tbody></table></figure>
@@ -822,9 +790,9 @@ $$</p>
 </ul>
 <p><strong>exp(x)</strong>： y等于e的n次方是一种指数函数（表示为x=lny），其图像是单调递增，n∈R，y&gt;0，与y轴相交于（0,1）点。，图像位于X轴上方，第二象限无限接近X轴。</p>
 </blockquote>
-<p><strong>开方运算</strong></p>
+<h4 id="开方运算"><strong>开方运算</strong></h4>
 <figure class="highlight python"><table><tbody><tr><td class="code"><pre><span class="line">a = torch.full((<span class="number">2</span>, <span class="number">3</span>), fill_value=<span class="number">4</span>)</span><br><span class="line"><span class="built_in">print</span>(a.sqrt())</span><br><span class="line"></span><br><span class="line"><span class="comment"># ----返回值-----</span></span><br><span class="line">tensor([[<span class="number">2.</span>, <span class="number">2.</span>, <span class="number">2.</span>],</span><br><span class="line">        [<span class="number">2.</span>, <span class="number">2.</span>, <span class="number">2.</span>]])</span><br></pre></td></tr></tbody></table></figure>
-<p><strong>对数运算</strong></p>
+<h4 id="对数运算"><strong>对数运算</strong></h4>
 <p>对数源于指数，是指数函数反函数 因为：N = a<sup>x&nbsp;</sup>  所以：x = log(a<sup>N</sup>)</p>
 <p>如果 N=a^x（a&gt;0,a≠1），即<em>a</em>的<em>x</em>次方等于<em>N</em>（<em>a</em>&gt;0，且<em>a</em>≠1），那么数<em>x</em>叫做以<em>a</em>为底<em>N</em>的对数（logarithm），记作：x=log（a<sup>N</sup>）　其中，<em>a</em>叫做对数的底数，<em>N</em>叫做真数，<em>x</em>叫做 “以<em>a</em>为底<em>N</em>的对数”。</p>
 <blockquote>
@@ -870,6 +838,7 @@ $$</p>
 </li>
 </ul>
 <h3 id="与numpy互换">与numpy互换</h3>
+<h4 id="几种方式">几种方式</h4>
 <ul>
 <li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/352877584">图解PyTorch中的torch.gather函数 - 知乎</a></li>
 <li><a target="_blank" rel="noopener" href="https://blog.csdn.net/lilai619/article/details/123083492">pytorch和numpy的互转</a> ，有以下几种方式：
@@ -881,6 +850,27 @@ $$</p>
 </ul>
 </li>
 </ul>
+<h4 id="List-vs-Nparray">List vs Nparray</h4>
+<p>Numpy中的Nparray采用连续地址存储，原生list只能通过寻址方式找到下一种元素；</p>
+<p><img src="/article/2751853729/image-20240102223912335.png" alt=""></p>
+<p>这是因为Numpy制定了其存储的数据类型，可以统一分配内存空间，而List中的数据类型是确定的。</p>
+<ul>
+<li>
+<p>Nparray在科学计算方面性能远高于List, 可以省掉许多循环语句</p>
+</li>
+<li>
+<p>Nparray支持并行化运算，底层采用C语言编写，接触了Python解释器的性能限制，所以效率远高于纯Python代码</p>
+</li>
+</ul>
+<h4 id="Numpy-vs-Tensor">Numpy vs Tensor</h4>
+<p>Numpy和Tensor相比较，他们的区别如下：</p>
+<ul>
+<li>Tensor 和 Numpy都是矩阵，区别是前者可以在GPU上运行，后者只能在CPU上。</li>
+<li>Tensor可以直接通过print显示数据类型，而Numpy不可以。</li>
+</ul>
+<blockquote>
+<p><strong>在GPU上运行时:</strong>  Tensor内部的数据类型为ndarray，GPU不具有更改元素值的能力，这时Tensor内部元素的数值不可改变</p>
+</blockquote>
 <p><strong>参考</strong></p>
 <ul>
 <li><a target="_blank" rel="noopener" href="https://blog.csdn.net/hanmo22357/article/details/129524092">https://blog.csdn.net/hanmo22357/article/details/129524092</a></li>
@@ -1314,7 +1304,7 @@ $$</p>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            
+                            Tensor的概念、在机器学习中的位置、稀疏张量与稠密张量、数学概念回忆、Tensor数据类型，代码实操等
                         
                     </div>
                     <div class="publish-info">
