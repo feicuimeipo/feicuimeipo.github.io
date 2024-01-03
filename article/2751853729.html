@@ -401,9 +401,6 @@
         <hr class="clearfix">
 
         
-        <!-- 是否加载使用自带的 prismjs. -->
-        <link rel="stylesheet" href="/libs/prism/prism.min.css">
-        
 
         
 
@@ -417,27 +414,27 @@
 </li>
 <li>
 <p><strong>向量</strong>可以看成是一维表格，向量中元素的位置需要通过其索引确定，表示为</p>
-<p><img src="/article/2751853729/image-20240103024202117.png" alt></p>
+<p><img src="/article/2751853729/image-20240103024202117.png" alt=""></p>
 </li>
 <li>
 <p><strong>短阵</strong>可以看成是二维表格，矩阵中的元素位置需要通过其行号和列号确定，表示为</p>
-<p><img src="/article/2751853729/image-20240103024033803.png" alt></p>
+<p><img src="/article/2751853729/image-20240103024033803.png" alt=""></p>
 </li>
 </ul>
 <p><strong>张量(Tensor) 可以视为矩阵的扩展，可以用于表示无穷维度的数据</strong></p>
 <p>如果我们用标量、向量或矩阵描述一个事物时，该事物最多可用 [H,W]的维度表示。在现实与客观世界中，我们经常会碰到的物体的维度可能会更高维度，很难通过向量或矩阵来描述，这时我们就需要<strong>张量</strong>。也就是说，我们可以通过张量来描述任意维度的物体 <code>H * W * C</code>，其中C为C维的特征图（特征图是深度学习中的一个概念），除外我们还可以用<strong>Tensor</strong>描述更高维度的物体：<code>H * W * C* D</code>，其中D为未知的更高维空间。</p>
 <p>总之，张量是对于标量、向量、矩阵之上进行更加泛化的定义。标量可以看成是0阶的张量，向量是1阶段张量，矩阵是2阶的张量，除了0,1,2阶的张量之外，还有<code>3阶、4阶、5阶..n阶</code>的张量。引申到<strong>深度学习</strong>，其 数据输入的维度是不确定的（可以是任意维度），这时就需要采用一个更加广泛的概念去描述这些量，Tensor就可以更便利解决该问题的。</p>
 <h2 id="Tensor的基本概念">Tensor的基本概念</h2>
-<p><img src="/article/2751853729/image-20240103024323595.png" alt></p>
+<p><img src="/article/2751853729/image-20240103024323595.png" alt=""></p>
 <p>其中标量是0维的张量，向量是1维的张量，矩阵是2维的张量。</p>
 <p>举例：如下所示，左侧为一个长方体某一切面的矩阵（二阶张量），该矩阵包含N*M个元素，其中每一个元素是一个标量，每一张都是一个向量。一个物体有N个切面，将C 个 N * M 拼接到一起，就会得到一个三阶的张量<code>C*N*M</code>用于表示长方体(如下右图)。</p>
-<p><img src="/article/2751853729/image-20240103024343658.png" alt></p>
+<p><img src="/article/2751853729/image-20240103024343658.png" alt=""></p>
 <blockquote>
 <p>在用张量描述物体时，我们需要确定这个张量具体是一个什么样的量，用变量或常量来描述。</p>
 </blockquote>
 <h2 id="Tensor与机器学习的关系">Tensor与机器学习的关系</h2>
 <p>完整的机器学习的任务，会涉及到样本、模型等元素（如下所示）。</p>
-<p><img src="/article/2751853729/image-20240103024403236.png" alt></p>
+<p><img src="/article/2751853729/image-20240103024403236.png" alt=""></p>
 <p>对于<strong>样本</strong>（机器学习中用到的数据）我们就可通过Tensor来对其进行描述。<strong>比如一条语音数据</strong>，我们可有能会采用向量来进行描述，该向量就是1阶的张量。此时向量描述的是语音数据被采样后在当前时刻的声音特征，图形化之后可能为波行。而<strong>对于灰度图</strong>，我们通常采用矩阵描述（二阶Tensor），表示成<code>H*W</code>，<strong>彩色图</strong>则会描述成<code>[H * W * C]</code>，为一个三阶Tensor，其中C=3。</p>
 <p>而<strong>模型</strong>（模型分为<strong>有参数模型</strong>与<strong>无参数模型</strong>)，有参数模型一般被描述为  <code>Y = WX + b</code>函数，其中X是指样本，W,B是指参数。当W与B未知的情况下为变量，该变量也是通过Tensor来表示，Y为最后的标签，而标签在进行数字化时也会通过Tensor来对其进行描述。</p>
 <blockquote>
@@ -445,7 +442,7 @@
 </blockquote>
 <p>结论：<strong>Tensor可以用来描述机器学习过程中的样本或模型</strong>。</p>
 <h2 id="Tensor的基本操作">Tensor的基本操作</h2>
-<p><img src="/article/2751853729/image-20240102201942723.png" alt></p>
+<p><img src="/article/2751853729/image-20240102201942723.png" alt=""></p>
 <ul>
 <li>类型：Tensor类型</li>
 <li>创建：如何创建Tensor</li>
@@ -575,7 +572,7 @@
 </ul>
 <h4 id="List-vs-Nparray">List vs Nparray</h4>
 <p>Numpy中的Nparray采用连续地址存储，原生list只能通过寻址方式找到下一种元素；</p>
-<p><img src="/article/2751853729/image-20240102223912335.png" alt></p>
+<p><img src="/article/2751853729/image-20240102223912335.png" alt=""></p>
 <p>这是因为Numpy制定了其存储的数据类型，可以统一分配内存空间，而List中的数据类型是确定的。</p>
 <ul>
 <li>
@@ -728,7 +725,7 @@
 <p><strong><code>torch.sparse_coo_tensor</code>用法</strong></p>
 <figure class="highlight python"><table><tbody><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"></span><br><span class="line">dev = torch.device(<span class="string">"cpu"</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 定义长度分别为3个长度的坐标: [0,2] [1,0] [1,2],</span></span><br><span class="line"><span class="comment"># indices = torch.tensor([[0, 1, 2], [0, 1, 2]]) 会保存数据落地对角线上</span></span><br><span class="line">indices = torch.tensor([[<span class="number">0</span>, <span class="number">1</span>, <span class="number">1</span>], [<span class="number">2</span>, <span class="number">0</span>, <span class="number">2</span>]])</span><br><span class="line"><span class="comment"># 以上3组从坐标对应的三个非0元素 3,4,5</span></span><br><span class="line">values = torch.tensor([<span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>], dtype=torch.float32)</span><br><span class="line"><span class="comment"># 原张量的形状是一个2,4的tensor, 如果用稠密方式打印，打看到一个2,4的变量</span></span><br><span class="line">x = torch.sparse_coo_tensor(indices, values, [<span class="number">3</span>, <span class="number">3</span>], device=dev, dtype=torch.float32)</span><br><span class="line">x_to_dense = x.to_dense()</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">"--------sparse_coo_tensor------------"</span>)</span><br><span class="line"><span class="built_in">print</span>(x)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">"--------x_to_dense------------"</span>)</span><br><span class="line"><span class="built_in">print</span>(x_to_dense)</span><br></pre></td></tr></tbody></table></figure>
 <p>控制台输出</p>
-<p><img src="/article/2751853729/image-20240103020805785.png" alt></p>
+<p><img src="/article/2751853729/image-20240103020805785.png" alt=""></p>
 <p><strong>例：将数据落地对角线上</strong></p>
 <figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">indices = torch.tensor([[0, 1, 2], [0, 1, 2]]) </span><br><span class="line">values = torch.tensor([1,2,3], dtype=torch.float32)</span><br></pre></td></tr></tbody></table></figure>
 <blockquote>
@@ -1307,9 +1304,6 @@
 <!-- 代码块功能依赖 -->
 <script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
 
-
-  <!-- 是否加载使用自带的 prismjs. -->
-  <script type="text/javascript" src="/libs/prism/prism.min.js"></script>
 
 
 <!-- 代码语言 -->
