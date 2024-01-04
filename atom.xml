@@ -6,7 +6,7 @@
   <link href="https://blog.nianxi.cc/atom.xml" rel="self"/>
   
   <link href="https://blog.nianxi.cc/"/>
-  <updated>2024-01-04T02:06:18.296Z</updated>
+  <updated>2024-01-04T04:03:51.334Z</updated>
   <id>https://blog.nianxi.cc/</id>
   
   <author>
@@ -17,11 +17,11 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>PyTorch之Tensor综述</title>
+    <title>Tensor的基本概念-Tensor</title>
     <link href="https://blog.nianxi.cc/article/2751853729.html"/>
     <id>https://blog.nianxi.cc/article/2751853729.html</id>
     <published>2024-01-02T12:25:29.022Z</published>
-    <updated>2024-01-04T02:06:18.296Z</updated>
+    <updated>2024-01-04T04:03:51.334Z</updated>
     
     
       
@@ -42,11 +42,11 @@
   </entry>
   
   <entry>
-    <title>机器学习基础</title>
+    <title>PyTorch零基础入门-机器学习基础</title>
     <link href="https://blog.nianxi.cc/article/2348287028.html"/>
     <id>https://blog.nianxi.cc/article/2348287028.html</id>
     <published>2024-01-01T18:57:28.334Z</published>
-    <updated>2024-01-03T04:25:44.606Z</updated>
+    <updated>2024-01-04T02:27:17.260Z</updated>
     
     
       
@@ -75,7 +75,7 @@
     <link href="https://blog.nianxi.cc/article/1499102559.html"/>
     <id>https://blog.nianxi.cc/article/1499102559.html</id>
     <published>2024-01-01T17:48:08.626Z</published>
-    <updated>2024-01-02T22:14:05.499Z</updated>
+    <updated>2024-01-04T02:27:12.115Z</updated>
     
     
       
@@ -155,7 +155,7 @@ B[JAVA字节码] -- 解释 --&amp;gt; C[Window</summary>
     <link href="https://blog.nianxi.cc/article/453215639.html"/>
     <id>https://blog.nianxi.cc/article/453215639.html</id>
     <published>2023-12-31T19:08:07.000Z</published>
-    <updated>2024-01-01T19:49:35.877Z</updated>
+    <updated>2024-01-04T02:09:40.331Z</updated>
     
     
       
@@ -163,7 +163,8 @@ B[JAVA字节码] -- 解释 --&amp;gt; C[Window</summary>
         
         
     <summary type="html">&lt;p&gt;欢迎来到Sarah小站&lt;/p&gt;
-</summary>
+&lt;p&gt;姓名： Sarah&lt;/p&gt;
+&lt;p&gt;职业：</summary>
         
       
     
