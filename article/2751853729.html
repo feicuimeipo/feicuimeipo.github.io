@@ -362,21 +362,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2024-01-04
+                    2024-01-06
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    4.9k
+                    5k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    19 分
+                    20 分
                 </div>
                 
                 
@@ -440,8 +440,10 @@
 <li>操作：切片、索引、变型等</li>
 <li>与<code>numpy</code>互转：Tensor可以与numpy互转</li>
 </ul>
-<h2 id="Tensor类型">Tensor类型</h2>
+<h2 id="Tensor类型-torch-tensor">Tensor类型 - torch.tensor</h2>
 <p>张量（Tensor）是Pytorch库中的基本数据类型，在 Pytorch中各种基本数字类型都有其对应的Tensor类型（但在Pytorch中没有内嵌的字符串类型）。</p>
+<h3 id="torch-tensor-vs-torch-Tensor">torch.tensor vs torch.Tensor</h3>
+<p>PyTorch中torch.Tensor是主要的Tensor类，而torch.tenso则是返回一个Tensor的函数。</p>
 <h3 id="类型列表"><strong>类型列表</strong></h3>
 <p>Tensor的每种类型分别有对应CPU和GPU版本。加粗部分为常用类型。Tensor默认的数据类型<code>FloatTensor</code>。</p>
 <p>Tensor类型常见的操作见 **<code>Tensor的操作</code>**章节</p>
@@ -720,7 +722,7 @@
 <p><strong><code>torch.sparse_coo_tensor</code>用法</strong></p>
 <figure class="highlight python"><table><tbody><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"></span><br><span class="line">dev = torch.device(<span class="string">"cpu"</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 定义长度分别为3个长度的坐标: [0,2] [1,0] [1,2],</span></span><br><span class="line"><span class="comment"># indices = torch.tensor([[0, 1, 2], [0, 1, 2]]) 会保存数据落地对角线上</span></span><br><span class="line">indices = torch.tensor([[<span class="number">0</span>, <span class="number">1</span>, <span class="number">1</span>], [<span class="number">2</span>, <span class="number">0</span>, <span class="number">2</span>]])</span><br><span class="line"><span class="comment"># 以上3组从坐标对应的三个非0元素 3,4,5</span></span><br><span class="line">values = torch.tensor([<span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>], dtype=torch.float32)</span><br><span class="line"><span class="comment"># 原张量的形状是一个2,4的tensor, 如果用稠密方式打印，打看到一个2,4的变量</span></span><br><span class="line">x = torch.sparse_coo_tensor(indices, values, [<span class="number">3</span>, <span class="number">3</span>], device=dev, dtype=torch.float32)</span><br><span class="line">x_to_dense = x.to_dense()</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">"--------sparse_coo_tensor------------"</span>)</span><br><span class="line"><span class="built_in">print</span>(x)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">"--------x_to_dense------------"</span>)</span><br><span class="line"><span class="built_in">print</span>(x_to_dense)</span><br></pre></td></tr></tbody></table></figure>
 <p>控制台输出</p>
-<p><img src="/article/2751853729/image-20240103020805785.png" alt=""></p>
+<p><img src="/article/2751853729/image-20240106020025681.png" alt=""></p>
 <p><strong>例：将数据落地对角线上</strong></p>
 <figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">indices = torch.tensor([[0, 1, 2], [0, 1, 2]]) </span><br><span class="line">values = torch.tensor([1,2,3], dtype=torch.float32)</span><br></pre></td></tr></tbody></table></figure>
 <blockquote>
@@ -743,7 +745,7 @@
 <li>torch.exp(input, out=None) - e指数，注意只支持浮点型</li>
 <li>torch.sqrt(input, out=None) - 开方</li>
 <li>torch.log(input, out=None) - 对数运算，以e为底</li>
-<li>ceil/round/floor/trunc - 取整/四舍五入/下取整/只保留整数部分 - 如<code>torch.ceil(input, out=None)</code></li>
+<li><code>ceil/round/floor/trunc/frac/%</code> - 向上取整/四舍五入/向下取整/只保留整数/只取小数部分/取余 - 如<code>torch.ceil(input, out=None)</code></li>
 <li>clamp(input, min, max) - 超过min和max部分截断 - <code>torch.clamp(input, min, max, out=None)</code></li>
 <li>torch.abs(input, out=None)- 求绝对值</li>
 <li>…</li>
@@ -1263,30 +1265,29 @@ $$</p>
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;本篇
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
                 <a href="/article/2751853729.html">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="PyTorch入门-Tensor综述">
+                        <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="PyTorch入门-Tensor综述-操作">
                         
-                        <span class="card-title">PyTorch入门-Tensor综述</span>
+                        <span class="card-title">PyTorch入门-Tensor综述-操作</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            Tensor的概念、在机器学习中的位置、稀疏张量与稠密张量、数学概念回忆、Tensor数据类型，代码实操等
+                            in-place操作
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2024-01-02
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2024-01-05
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -1299,7 +1300,6 @@ $$</p>
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
@@ -1529,7 +1529,7 @@ $$</p>
         <div class="col s12 m8 l8 copy-right"> 			
             Copyright&nbsp;&copy;
             
-                <span id="year">2024</span>
+                <span id="year">2024-2025</span>
             
 			
             <a href="/about" target="_blank">nianxi.cc</a>
@@ -1549,7 +1549,7 @@ $$</p>
 			
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">11.1k</span>
+                        class="white-color">11.9k</span>
             
             
 			
