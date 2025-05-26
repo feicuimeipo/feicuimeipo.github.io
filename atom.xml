@@ -6,7 +6,7 @@
   <link href="https://blog.nianxi.cc/atom.xml" rel="self"/>
   
   <link href="https://blog.nianxi.cc/"/>
-  <updated>2024-01-05T18:17:25.896Z</updated>
+  <updated>2025-05-26T08:40:53.290Z</updated>
   <id>https://blog.nianxi.cc/</id>
   
   <author>
@@ -17,11 +17,118 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Java能力框架之JVM调优</title>
+    <link href="https://blog.nianxi.cc/article/1531152183.html"/>
+    <id>https://blog.nianxi.cc/article/1531152183.html</id>
+    <published>2025-05-26T08:40:53.290Z</published>
+    <updated>2025-05-26T08:40:53.290Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;操作系统级别Java进程所占用的内存数值不能准确的反应堆内存的真实占用情况，因为GC过后这个值是不会变化的，内存调优的时候要更多地使用JDK提供的内存查看工具，比如JConsole和Java VisualVM。&lt;/p&gt;
+&lt;h2 id=&quot;Full-GC&quot;&gt;Full</summary>
+        
+      
+    
+    
+    
+    <category term="Java系列" scheme="https://blog.nianxi.cc/categories/Java%E7%B3%BB%E5%88%97/"/>
+    
+    
+    <category term="Java" scheme="https://blog.nianxi.cc/tags/Java/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Java能力框架之JVM原理</title>
+    <link href="https://blog.nianxi.cc/article/578523837.html"/>
+    <id>https://blog.nianxi.cc/article/578523837.html</id>
+    <published>2025-05-26T08:40:53.288Z</published>
+    <updated>2025-05-26T08:40:53.288Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;JVM模型-一次编译，到处运行&quot;&gt;JVM模型: 一次编译，到处运行&lt;/h2&gt;
+&lt;pre class=&quot;mermaid&quot;&gt;graph TD
+A[JAVA程序] --&amp;gt;  B[JAVA字节码]
+B[JAVA字节码] -- 解释 --&amp;gt; C[Window</summary>
+        
+      
+    
+    
+    
+    <category term="Java系列" scheme="https://blog.nianxi.cc/categories/Java%E7%B3%BB%E5%88%97/"/>
+    
+    
+    <category term="Java" scheme="https://blog.nianxi.cc/tags/Java/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Java能力框架</title>
+    <link href="https://blog.nianxi.cc/article/2914746800.html"/>
+    <id>https://blog.nianxi.cc/article/2914746800.html</id>
+    <published>2025-05-26T08:40:53.286Z</published>
+    <updated>2025-05-26T08:40:53.287Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;JAVA从初学到资深再到专家，是一个循序渐进的过程，不仅要coding，还要对IT知识体系有认知。以下是笔者认为高阶JAVA技术人员需要掌握的整体能力框架。相关内容的掌握的深浅直接反映其技术水平。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;改为文字，这样后面调整好修改&lt;/p&gt;</summary>
+        
+      
+    
+    
+    
+    <category term="Java系列" scheme="https://blog.nianxi.cc/categories/Java%E7%B3%BB%E5%88%97/"/>
+    
+    
+    <category term="Java" scheme="https://blog.nianxi.cc/tags/Java/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>PyTorch零基础入门</title>
+    <link href="https://blog.nianxi.cc/article/1499102559.html"/>
+    <id>https://blog.nianxi.cc/article/1499102559.html</id>
+    <published>2025-05-26T08:40:53.283Z</published>
+    <updated>2025-05-26T08:40:53.284Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;PyTorch介绍&quot;&gt;PyTorch介绍&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&quot;/article/1499102559/image-20240103050628116.png&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="PyTorch系列" scheme="https://blog.nianxi.cc/categories/PyTorch%E7%B3%BB%E5%88%97/"/>
+    
+    
+    <category term="PyTorch" scheme="https://blog.nianxi.cc/tags/PyTorch/"/>
+    
+  </entry>
+  
+  <entry>
     <title>PyTorch入门-Tensor综述-操作</title>
     <link href="https://blog.nianxi.cc/article/2751853729.html"/>
     <id>https://blog.nianxi.cc/article/2751853729.html</id>
-    <published>2024-01-05T15:51:32.246Z</published>
-    <updated>2024-01-05T18:17:25.896Z</updated>
+    <published>2025-05-26T08:40:53.280Z</published>
+    <updated>2025-05-26T08:40:53.280Z</updated>
     
     
       
@@ -46,8 +153,8 @@
     <title>PyTorch入门-Tensor综述</title>
     <link href="https://blog.nianxi.cc/article/2751853729.html"/>
     <id>https://blog.nianxi.cc/article/2751853729.html</id>
-    <published>2024-01-02T12:25:29.022Z</published>
-    <updated>2024-01-05T18:16:56.136Z</updated>
+    <published>2025-05-26T08:40:53.265Z</published>
+    <updated>2025-05-26T08:40:53.266Z</updated>
     
     
       
@@ -71,8 +178,8 @@
     <title>PyTorch入门-机器学习基础</title>
     <link href="https://blog.nianxi.cc/article/2348287028.html"/>
     <id>https://blog.nianxi.cc/article/2348287028.html</id>
-    <published>2024-01-01T18:57:28.334Z</published>
-    <updated>2024-01-04T04:23:02.575Z</updated>
+    <published>2025-05-26T08:40:53.262Z</published>
+    <updated>2025-05-26T08:40:53.263Z</updated>
     
     
       
@@ -97,91 +204,11 @@
   </entry>
   
   <entry>
-    <title>PyTorch零基础入门</title>
-    <link href="https://blog.nianxi.cc/article/1499102559.html"/>
-    <id>https://blog.nianxi.cc/article/1499102559.html</id>
-    <published>2024-01-01T17:48:08.626Z</published>
-    <updated>2024-01-04T04:17:41.269Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;PyTorch介绍&quot;&gt;PyTorch介绍&lt;/h2&gt;
-&lt;p&gt;&lt;img src=&quot;/article/1499102559/image-20240103050628116.png&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="PyTorch系列" scheme="https://blog.nianxi.cc/categories/PyTorch%E7%B3%BB%E5%88%97/"/>
-    
-    
-    <category term="PyTorch" scheme="https://blog.nianxi.cc/tags/PyTorch/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Java能力框架之JVM原理</title>
-    <link href="https://blog.nianxi.cc/article/578523837.html"/>
-    <id>https://blog.nianxi.cc/article/578523837.html</id>
-    <published>2024-01-01T09:54:07.308Z</published>
-    <updated>2024-01-02T08:40:54.785Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;JVM模型-一次编译，到处运行&quot;&gt;JVM模型: 一次编译，到处运行&lt;/h2&gt;
-&lt;pre class=&quot;mermaid&quot;&gt;graph TD
-A[JAVA程序] --&amp;gt;  B[JAVA字节码]
-B[JAVA字节码] -- 解释 --&amp;gt; C[Window</summary>
-        
-      
-    
-    
-    
-    <category term="Java系列" scheme="https://blog.nianxi.cc/categories/Java%E7%B3%BB%E5%88%97/"/>
-    
-    
-    <category term="Java" scheme="https://blog.nianxi.cc/tags/Java/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Java能力框架之JVM调优</title>
-    <link href="https://blog.nianxi.cc/article/1531152183.html"/>
-    <id>https://blog.nianxi.cc/article/1531152183.html</id>
-    <published>2024-01-01T09:52:42.754Z</published>
-    <updated>2024-01-02T08:14:49.078Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;操作系统级别Java进程所占用的内存数值不能准确的反应堆内存的真实占用情况，因为GC过后这个值是不会变化的，内存调优的时候要更多地使用JDK提供的内存查看工具，比如JConsole和Java VisualVM。&lt;/p&gt;
-&lt;h2 id=&quot;Full-GC&quot;&gt;Full</summary>
-        
-      
-    
-    
-    
-    <category term="Java系列" scheme="https://blog.nianxi.cc/categories/Java%E7%B3%BB%E5%88%97/"/>
-    
-    
-    <category term="Java" scheme="https://blog.nianxi.cc/tags/Java/"/>
-    
-  </entry>
-  
-  <entry>
     <title>Lives Station首页</title>
     <link href="https://blog.nianxi.cc/article/453215639.html"/>
     <id>https://blog.nianxi.cc/article/453215639.html</id>
     <published>2023-12-31T19:08:07.000Z</published>
-    <updated>2025-05-26T07:46:41.670Z</updated>
+    <updated>2025-05-26T08:40:53.262Z</updated>
     
     
       
@@ -201,33 +228,6 @@ B[JAVA字节码] -- 解释 --&amp;gt; C[Window</summary>
     
     
     <category term="Lives Station" scheme="https://blog.nianxi.cc/tags/Lives-Station/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Java能力框架</title>
-    <link href="https://blog.nianxi.cc/article/2914746800.html"/>
-    <id>https://blog.nianxi.cc/article/2914746800.html</id>
-    <published>2023-12-31T06:24:53.467Z</published>
-    <updated>2024-01-02T08:15:29.835Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;JAVA从初学到资深再到专家，是一个循序渐进的过程，不仅要coding，还要对IT知识体系有认知。以下是笔者认为高阶JAVA技术人员需要掌握的整体能力框架。相关内容的掌握的深浅直接反映其技术水平。&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;改为文字，这样后面调整好修改&lt;/p&gt;</summary>
-        
-      
-    
-    
-    
-    <category term="Java系列" scheme="https://blog.nianxi.cc/categories/Java%E7%B3%BB%E5%88%97/"/>
-    
-    
-    <category term="Java" scheme="https://blog.nianxi.cc/tags/Java/"/>
     
   </entry>
   
