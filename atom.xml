@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>🐘 _山海博客</title>
+  <title>🐘 山海博客</title>
   
   <subtitle>山海</subtitle>
   <link href="https://blog.nianxi.cc/atom.xml" rel="self"/>
   
   <link href="https://blog.nianxi.cc/"/>
-  <updated>2025-05-26T08:40:53.290Z</updated>
+  <updated>2026-03-19T13:46:02.787Z</updated>
   <id>https://blog.nianxi.cc/</id>
   
   <author>
-    <name>_山海</name>
+    <name>山海</name>
     
   </author>
   
@@ -21,7 +21,7 @@
     <link href="https://blog.nianxi.cc/article/1531152183.html"/>
     <id>https://blog.nianxi.cc/article/1531152183.html</id>
     <published>2025-05-26T08:40:53.290Z</published>
-    <updated>2025-05-26T08:40:53.290Z</updated>
+    <updated>2026-03-19T13:46:02.787Z</updated>
     
     
       
@@ -35,7 +35,7 @@
     
     
     
-    <category term="Java系列" scheme="https://blog.nianxi.cc/categories/Java%E7%B3%BB%E5%88%97/"/>
+    <category term="Java" scheme="https://blog.nianxi.cc/categories/Java/"/>
     
     
     <category term="Java" scheme="https://blog.nianxi.cc/tags/Java/"/>
@@ -47,7 +47,7 @@
     <link href="https://blog.nianxi.cc/article/578523837.html"/>
     <id>https://blog.nianxi.cc/article/578523837.html</id>
     <published>2025-05-26T08:40:53.288Z</published>
-    <updated>2025-05-26T08:40:53.288Z</updated>
+    <updated>2026-03-19T13:45:54.892Z</updated>
     
     
       
@@ -63,7 +63,7 @@ B[JAVA字节码] -- 解释 --&amp;gt; C[Window</summary>
     
     
     
-    <category term="Java系列" scheme="https://blog.nianxi.cc/categories/Java%E7%B3%BB%E5%88%97/"/>
+    <category term="Java" scheme="https://blog.nianxi.cc/categories/Java/"/>
     
     
     <category term="Java" scheme="https://blog.nianxi.cc/tags/Java/"/>
@@ -75,7 +75,7 @@ B[JAVA字节码] -- 解释 --&amp;gt; C[Window</summary>
     <link href="https://blog.nianxi.cc/article/2914746800.html"/>
     <id>https://blog.nianxi.cc/article/2914746800.html</id>
     <published>2025-05-26T08:40:53.286Z</published>
-    <updated>2025-05-26T08:40:53.287Z</updated>
+    <updated>2026-03-19T13:46:07.250Z</updated>
     
     
       
@@ -90,7 +90,7 @@ B[JAVA字节码] -- 解释 --&amp;gt; C[Window</summary>
     
     
     
-    <category term="Java系列" scheme="https://blog.nianxi.cc/categories/Java%E7%B3%BB%E5%88%97/"/>
+    <category term="Java" scheme="https://blog.nianxi.cc/categories/Java/"/>
     
     
     <category term="Java" scheme="https://blog.nianxi.cc/tags/Java/"/>
@@ -102,7 +102,7 @@ B[JAVA字节码] -- 解释 --&amp;gt; C[Window</summary>
     <link href="https://blog.nianxi.cc/article/1499102559.html"/>
     <id>https://blog.nianxi.cc/article/1499102559.html</id>
     <published>2025-05-26T08:40:53.283Z</published>
-    <updated>2025-05-26T08:40:53.284Z</updated>
+    <updated>2026-03-19T13:45:45.184Z</updated>
     
     
       
@@ -116,7 +116,7 @@ B[JAVA字节码] -- 解释 --&amp;gt; C[Window</summary>
     
     
     
-    <category term="PyTorch系列" scheme="https://blog.nianxi.cc/categories/PyTorch%E7%B3%BB%E5%88%97/"/>
+    <category term="PyTorch" scheme="https://blog.nianxi.cc/categories/PyTorch/"/>
     
     
     <category term="PyTorch" scheme="https://blog.nianxi.cc/tags/PyTorch/"/>
@@ -128,7 +128,7 @@ B[JAVA字节码] -- 解释 --&amp;gt; C[Window</summary>
     <link href="https://blog.nianxi.cc/article/2751853729.html"/>
     <id>https://blog.nianxi.cc/article/2751853729.html</id>
     <published>2025-05-26T08:40:53.280Z</published>
-    <updated>2025-05-26T08:40:53.280Z</updated>
+    <updated>2026-03-19T13:45:36.896Z</updated>
     
     
       
@@ -142,7 +142,7 @@ B[JAVA字节码] -- 解释 --&amp;gt; C[Window</summary>
     
     
     
-    <category term="PyTorch系列" scheme="https://blog.nianxi.cc/categories/PyTorch%E7%B3%BB%E5%88%97/"/>
+    <category term="PyTorch" scheme="https://blog.nianxi.cc/categories/PyTorch/"/>
     
     
     <category term="PyTorch" scheme="https://blog.nianxi.cc/tags/PyTorch/"/>
@@ -154,7 +154,7 @@ B[JAVA字节码] -- 解释 --&amp;gt; C[Window</summary>
     <link href="https://blog.nianxi.cc/article/2751853729.html"/>
     <id>https://blog.nianxi.cc/article/2751853729.html</id>
     <published>2025-05-26T08:40:53.265Z</published>
-    <updated>2025-05-26T08:40:53.266Z</updated>
+    <updated>2026-03-19T13:45:31.959Z</updated>
     
     
       
@@ -167,7 +167,7 @@ B[JAVA字节码] -- 解释 --&amp;gt; C[Window</summary>
     
     
     
-    <category term="PyTorch系列" scheme="https://blog.nianxi.cc/categories/PyTorch%E7%B3%BB%E5%88%97/"/>
+    <category term="PyTorch" scheme="https://blog.nianxi.cc/categories/PyTorch/"/>
     
     
     <category term="PyTorch" scheme="https://blog.nianxi.cc/tags/PyTorch/"/>
@@ -179,7 +179,7 @@ B[JAVA字节码] -- 解释 --&amp;gt; C[Window</summary>
     <link href="https://blog.nianxi.cc/article/2348287028.html"/>
     <id>https://blog.nianxi.cc/article/2348287028.html</id>
     <published>2025-05-26T08:40:53.262Z</published>
-    <updated>2025-05-26T08:40:53.263Z</updated>
+    <updated>2026-03-19T13:45:25.845Z</updated>
     
     
       
@@ -196,7 +196,7 @@ B[JAVA字节码] -- 解释 --&amp;gt; C[Window</summary>
     
     
     
-    <category term="PyTorch系列" scheme="https://blog.nianxi.cc/categories/PyTorch%E7%B3%BB%E5%88%97/"/>
+    <category term="PyTorch" scheme="https://blog.nianxi.cc/categories/PyTorch/"/>
     
     
     <category term="机器学习" scheme="https://blog.nianxi.cc/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
@@ -204,27 +204,58 @@ B[JAVA字节码] -- 解释 --&amp;gt; C[Window</summary>
   </entry>
   
   <entry>
-    <title>生活小站</title>
+    <title>菜谱</title>
+    <link href="https://blog.nianxi.cc/article/453215639.html"/>
+    <id>https://blog.nianxi.cc/article/453215639.html</id>
+    <published>2024-12-31T19:08:07.000Z</published>
+    <updated>2026-03-19T14:19:27.254Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;记录最近学会做的菜。&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&quot;炒合菜&quot;&gt;炒合菜&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;食材：粉丝，绿豆芽，韭菜，3颗鸡蛋&lt;/li&gt;
+&lt;li&gt;捞粉丝备用，注意只2~3即可起锅&lt;/li&gt;
+&lt;li&gt;摊鸡蛋 -</summary>
+        
+      
+    
+    
+    
+    <category term="生活小站" scheme="https://blog.nianxi.cc/categories/%E7%94%9F%E6%B4%BB%E5%B0%8F%E7%AB%99/"/>
+    
+    
+    <category term="生活小站" scheme="https://blog.nianxi.cc/tags/%E7%94%9F%E6%B4%BB%E5%B0%8F%E7%AB%99/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>日记</title>
     <link href="https://blog.nianxi.cc/article/453215639.html"/>
     <id>https://blog.nianxi.cc/article/453215639.html</id>
     <published>2023-12-31T19:08:07.000Z</published>
-    <updated>2026-03-16T10:35:32.436Z</updated>
+    <updated>2026-03-19T14:20:52.187Z</updated>
     
     
       
       
         
         
-    <summary type="html">&lt;h3</summary>
+    <summary type="html">&lt;h2</summary>
         
       
     
     
     
-    <category term="Lives Station" scheme="https://blog.nianxi.cc/categories/Lives-Station/"/>
+    <category term="生活小站" scheme="https://blog.nianxi.cc/categories/%E7%94%9F%E6%B4%BB%E5%B0%8F%E7%AB%99/"/>
     
     
-    <category term="Lives Station" scheme="https://blog.nianxi.cc/tags/Lives-Station/"/>
+    <category term="生活小站" scheme="https://blog.nianxi.cc/tags/%E7%94%9F%E6%B4%BB%E5%B0%8F%E7%AB%99/"/>
     
   </entry>
   
