@@ -3,5 +3,5 @@ title: {{ title }}
 date: {{ date }}
 tags:
 toc: true
-author: _山海
+author: 山海
 ---
