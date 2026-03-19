@@ -1,5 +1,5 @@
 ---
-title: 日记
+title: index
 categories: 生活小站
 tags:
   - 生活小站
