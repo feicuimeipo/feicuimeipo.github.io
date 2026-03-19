@@ -3,11 +3,11 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: 🐘 _山海博客
+title: 🐘 山海博客
 subtitle: '山海'
 description: 'JAVA,AI,Python,Pytorch, 机器学习, 深度学习,大模型，自然语言处理，技术分享，生活小记'
 keywords: 'JAVA,AI,Python,Pytorch, 机器学习, 深度学习,大模型，自然语言处理，技术分享，生活小记'
-author: _山海
+author: 山海
 language: zh-CN
 timezone: 'Asia/Shanghai'
 
