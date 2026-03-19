@@ -10,8 +10,8 @@ menu:
   Categories:
     url: /categories
     icon: fas fa-bookmark
-  Lives-Station:
-    url: /categories/Lives-Station
+  生活小站:
+    url: /categories/生活小站
     icon: fas fa-person-dress
   Archives:
     url: /archives
