@@ -71,7 +71,6 @@ hexo s #运行，http://localhost:4000/  访问
 hexo clean  && hexo g --d
 # hexo g 命令可以编译博客文件，生成要部署到远程服务器的文件。 hexo d 命令是执行部署操作。 hexo g -d 是将这两个命令的合在一起使用，编译后直接部署。通常出现这个就是成功了。
 
-
 hexo s #运行
 ```
 
@@ -79,11 +78,11 @@ hexo s #运行
 
 发布到githug
 
-1. git checkout main
-2. git add *
-1. git commit -m 'update'
-2. 发布到github 
-5. git push -u origin main
+1. hexo clean && hexo g  -d 
+2. git add * && git commit -m 'update‘
+3. git push (git push -u origin main)
+
+
 
 
 
