@@ -1,7 +1,7 @@
 ---
 title: Java能力框架
-categories: Java系列
-author: _山海
+categories: Java
+author: 山海
 tags:
   - Java
 keywords: java
