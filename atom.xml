@@ -6,7 +6,7 @@
   <link href="https://blog.nianxi.cc/atom.xml" rel="self"/>
   
   <link href="https://blog.nianxi.cc/"/>
-  <updated>2026-03-22T16:00:41.296Z</updated>
+  <updated>2026-03-19T13:46:02.787Z</updated>
   <id>https://blog.nianxi.cc/</id>
   
   <author>
@@ -15,35 +15,6 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
-  
-  <entry>
-    <title></title>
-    <link href="https://blog.nianxi.cc/article/0.html"/>
-    <id>https://blog.nianxi.cc/article/0.html</id>
-    <published>2026-03-22T14:57:56.376Z</published>
-    <updated>2026-03-22T16:00:41.296Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;title: 烘焙&lt;br&gt;
-categories: 生活小站&lt;br&gt;
-author: 山海&lt;br&gt;
-tags:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;生活小站&lt;br&gt;
-keywords:&lt;/li&gt;
-&lt;li&gt;‘生活小站, 烘焙’&lt;br&gt;
-abbrlink:</summary>
-        
-      
-    
-    
-    
-    
-  </entry>
   
   <entry>
     <title>Java能力框架之JVM调优</title>
