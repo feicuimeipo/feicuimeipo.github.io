@@ -6,7 +6,7 @@
   <link href="https://blog.nianxi.cc/atom.xml" rel="self"/>
   
   <link href="https://blog.nianxi.cc/"/>
-  <updated>2026-03-19T13:46:02.787Z</updated>
+  <updated>2026-03-22T15:21:31.700Z</updated>
   <id>https://blog.nianxi.cc/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>烘焙</title>
+    <link href="https://blog.nianxi.cc/article/453215640.html"/>
+    <id>https://blog.nianxi.cc/article/453215640.html</id>
+    <published>2026-03-10T19:08:07.000Z</published>
+    <updated>2026-03-22T15:21:31.700Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h3</summary>
+        
+      
+    
+    
+    
+    <category term="生活小站" scheme="https://blog.nianxi.cc/categories/%E7%94%9F%E6%B4%BB%E5%B0%8F%E7%AB%99/"/>
+    
+    
+    <category term="生活小站" scheme="https://blog.nianxi.cc/tags/%E7%94%9F%E6%B4%BB%E5%B0%8F%E7%AB%99/"/>
+    
+  </entry>
   
   <entry>
     <title>Java能力框架之JVM调优</title>
@@ -182,7 +207,7 @@ B[JAVA字节码] -- 解释 --&amp;gt; C[Window</summary>
     <link href="https://blog.nianxi.cc/article/1890053545.html"/>
     <id>https://blog.nianxi.cc/article/1890053545.html</id>
     <published>2024-12-31T19:08:07.000Z</published>
-    <updated>2026-03-19T19:16:18.956Z</updated>
+    <updated>2026-03-22T15:21:08.905Z</updated>
     
     
       
@@ -213,7 +238,7 @@ B[JAVA字节码] -- 解释 --&amp;gt; C[Window</summary>
     <link href="https://blog.nianxi.cc/article/453215639.html"/>
     <id>https://blog.nianxi.cc/article/453215639.html</id>
     <published>2023-12-31T19:08:07.000Z</published>
-    <updated>2026-03-19T18:34:28.288Z</updated>
+    <updated>2026-03-22T15:21:09.934Z</updated>
     
     
       
